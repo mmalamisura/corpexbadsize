@@ -1,0 +1,6 @@
+{
+  "name": "CorpEx",
+  "description": "Piattaforma professionale per la gestione e l'analisi di pratiche di credito corporate (BILCe, CEBI, LOM) con motore di reportistica AI ed alert automatici.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

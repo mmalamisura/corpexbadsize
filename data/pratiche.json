@@ -1,0 +1,568 @@
+[
+  {
+    "id": "pratica_9k49ap4gf",
+    "aziendaName": "Di Leo Nobile - S.p.a. Industria Conserve Alimentari",
+    "numeroPratica": "CC-2026-DLN",
+    "settoreAttivita": "Lavorazione e conservazione di frutta e di ortaggi",
+    "docType": "BILCe",
+    "status": "Completata",
+    "dateCreated": "2026-06-01T13:37:03.658Z",
+    "financialData": [
+      {
+        "year": 2024,
+        "fatturato": 40040000,
+        "ebitda": 4010000,
+        "rimanenze": 14882000,
+        "creditiCommerciali": 6177000,
+        "pfn": -11346000,
+        "dscr": null
+      },
+      {
+        "year": 2025,
+        "fatturato": 38852000,
+        "ebitda": 4298000,
+        "rimanenze": 14864000,
+        "creditiCommerciali": 10250000,
+        "pfn": -13567000,
+        "dscr": null
+      },
+      {
+        "year": 2026,
+        "fatturato": 9011000,
+        "ebitda": 1085000,
+        "rimanenze": 8242000,
+        "creditiCommerciali": 9557000,
+        "pfn": -17299000,
+        "dscr": null
+      }
+    ],
+    "alerts": [
+      {
+        "type": "CREDITI_COMMERCIALI_GROWTH",
+        "metric": "Crediti Commerciali",
+        "triggered": true,
+        "message": "I crediti commerciali sono cresciuti del 65.9% YoY nel 2025, superando la soglia critica del 20%",
+        "severity": "high",
+        "yearCurrent": 2025,
+        "growthRate": 0.6593815768172252
+      },
+      {
+        "type": "RIMANENZE_GROWTH",
+        "metric": "Rimanenze / Magazzino",
+        "triggered": false,
+        "message": "Le rimanenze registrano una variazione del -0.1% YoY nel 2025 (sotto soglia di alert di 25%)",
+        "severity": "info",
+        "yearCurrent": 2025,
+        "growthRate": -0.001209514850154549
+      },
+      {
+        "type": "PFN_DETERIORATION",
+        "metric": "Posizione Finanziaria Netta (PFN)",
+        "triggered": true,
+        "message": "La PFN è peggiorata del 19.6% YoY nel 2025, superando la soglia di tolleranza del 15%",
+        "severity": "high",
+        "yearCurrent": 2025,
+        "growthRate": 0.19575180680416004
+      },
+      {
+        "type": "CREDITI_COMMERCIALI_GROWTH",
+        "metric": "Crediti Commerciali",
+        "triggered": false,
+        "message": "I crediti commerciali registrano una variazione del -6.8% YoY nel 2026 (sotto soglia di alert di 20%)",
+        "severity": "info",
+        "yearCurrent": 2026,
+        "growthRate": -0.06760975609756098
+      },
+      {
+        "type": "RIMANENZE_GROWTH",
+        "metric": "Rimanenze / Magazzino",
+        "triggered": false,
+        "message": "Le rimanenze registrano una variazione del -44.6% YoY nel 2026 (sotto soglia di alert di 25%)",
+        "severity": "info",
+        "yearCurrent": 2026,
+        "growthRate": -0.4455059203444564
+      },
+      {
+        "type": "PFN_DETERIORATION",
+        "metric": "Posizione Finanziaria Netta (PFN)",
+        "triggered": true,
+        "message": "La PFN è peggiorata del 27.5% YoY nel 2026, superando la soglia di tolleranza del 15%",
+        "severity": "high",
+        "yearCurrent": 2026,
+        "growthRate": 0.27507923638239845
+      }
+    ],
+    "markdownReport": "# RELAZIONE COMMERCIALE EVOLUTA\n\n**All’attenzione del Comitato Rischi e Crediti**  \n**Dipartimento Delibere Corporate – Primaria Istituzione Bancaria Italiana**  \n**Data di Redazione:** Corrente  \n**Pratica Fidi N.:** CC-2026-DLN  \n**Soggetto Affidando:** Di Leo Nobile - S.p.a. Industria Conserve Alimentari  \n**Codice Settore (NACE/ATECO):** 10.39 - Lavorazione e conservazione di frutta e di ortaggi  \n\n---\n\n### 1. Profilo Aziendale\n\nLa **Di Leo Nobile - S.p.a. Industria Conserve Alimentari** è un’importante realtà industriale italiana operante nel settore della trasformazione agroalimentare, con una specializzazione consolidata nella lavorazione e conservazione di prodotti ortofrutticoli. L'azienda si colloca storicamente come un player di rilievo nel panorama della conservazione alimentare, comparto caratterizzato da un'elevata intensità di capitale circolante e da una forte stagionalità degli approvvigionamenti.\n\nSotto il profilo societario, la struttura presenta una governance di stampo tradizionale, tipica delle imprese familiari italiane evolute verso la forma di società per azioni. La capacità produttiva si poggia su impianti industriali che richiedono costanti investimenti in tecnologia per il mantenimento degli standard qualitativi e di efficienza energetica richiesti dalle normative comunitarie e dalle severe specifiche della Grande Distribuzione Organizzata (GDO).\n\nTuttavia, l'analisi del profilo aziendale non può prescindere dall'evidenziare una discontinuità gestionale e dimensionale di eccezionale gravità rilevata nell'ultimo esercizio disponibile (2026). A fronte di un posizionamento storico consolidato su un volume d'affari superiore ai 40 milioni di euro (registrato nel 2024), l'azienda mostra una contrazione drammatica dei volumi operativi nel 2026, che impone un'analisi rigorosa circa la continuità aziendale (*going concern*) e la sostenibilità del debito in essere e prospettico.\n\n---\n\n### 2. Analisi Settoriale\n\nIl settore della lavorazione e conservazione di frutta e ortaggi in Italia è caratterizzato da dinamiche competitive estremamente complesse:\n\n*   **Pressione sui Margini:** La concentrazione del potere contrattuale nelle mani della GDO impone ai trasformatori politiche di prezzo fortemente competitive, comprimendo i margini operativi lordi.\n*   **Volatilità delle Materie Prime:** I cambiamenti climatici e le fluttuazioni dei costi energetici e degli imballaggi (vetro, banda stagnata, plastica) generano una forte instabilità nei costi di produzione, difficilmente ribaltabile a valle sui prezzi di vendita.\n*   **Fabbisogno di Circolante:** Il ciclo del circolante è strutturalmente penalizzante. Gli acquisti di materia prima si concentrano nei mesi di raccolta (campagne stagionali), richiedendo immediati esborsi finanziari o dilazioni minime ai produttori agricoli (ex art. 62 D.L. 1) a fronte di incassi dai clienti GDO che superano frequentemente i 90-120 giorni.\n*   **Barriere all'Entrata e Certificazioni:** Gli standard di sicurezza alimentare (IFS, BRC) e la necessità di tracciabilità richiedono investimenti continui in sistemi di controllo qualità, favorendo i player di maggiori dimensioni dotati di adeguate economie di scala.\n\nIn questo scenario, la contrazione dimensionale della Di Leo Nobile S.p.a. nel 2026 rischia di posizionare l'azienda in una fascia di marginalità sub-ottimale, privandola della forza contrattuale necessaria per negoziare con la GDO e con i grandi fornitori di materie prime.\n\n---\n\n### 3. Analisi Economica\n\nL'andamento economico del triennio analizzato evidenzia un trend che definire allarmante risulta eufemistico, caratterizzato da un collasso strutturale del valore della produzione nell'ultimo esercizio.\n\n| Voce di Conto Economico | Anno 2024 | Anno 2025 | Anno 2026 | Var. % 25/24 | Var. % 26/25 |\n| :--- | :--- | :--- | :--- | :--- | :--- |\n| **Fatturato** | € 40.040.000 | € 38.852.000 | € 9.011.000 | -2,97% | -76,81% |\n| **EBITDA** | € 4.010.000 | € 4.298.000 | € 1.085.000 | +7,18% | -74,76% |\n| **EBITDA Margin** | 10,01% | 11,06% | 12,04% | +10,49% | +8,86% |\n\n#### Analisi Critica:\n*   **Esercizio 2024-2025:** Il fatturato registra una lieve flessione del 2,97%, fisiologica nel contesto di mercato. Si apprezza, tuttavia, un efficientamento della struttura dei costi che porta l'EBITDA a crescere del 7,18% (da € 4,01M a € 4,30M), con un miglioramento dell'EBITDA Margin che sale all'11,06%. Tale dinamica esprimeva una buona tenuta industriale e una corretta gestione dei costi variabili.\n*   **Esercizio 2026:** Si assiste a un vero e proprio crollo del fatturato, che si attesta a soli € 9,01M, registrando una perdita del **76,81%** rispetto all'anno precedente. Sebbene l'EBITDA si mantenga positivo in valore assoluto (€ 1,085M) e mostri un EBITDA Margin apparentemente resiliente (12,04%), la drastica riduzione della massa critica solleva dubbi circa la capacità dell'azienda di coprire i costi fissi di struttura, gli ammortamenti e, soprattutto, gli oneri finanziari derivanti da un indebitamento che, come vedremo, è invece aumentato. \n\n*Nota di cautela metodologica:* Un calo del fatturato di tale portata, in assenza di operazioni straordinarie di scissione o cessione di rami d'azienda (da verificare in sede di nota integrativa), fa ipotizzare una grave crisi industriale, la perdita di primari clienti (GDO) o un fermo produttivo prolungato.\n\n---\n\n### 4. Analisi Finanziaria\n\nLa dinamica finanziaria evidenzia una grave e progressiva asimmetria tra l'andamento dei flussi di cassa operativi e la struttura del debito, determinando una situazione di forte tensione finanziaria.\n\n| Voce di Stato Patrimoniale / Indicatori | Anno 2024 | Anno 2025 | Anno 2026 | Var. % 25/24 | Var. % 26/25 |\n| :--- | :--- | :--- | :--- | :--- | :--- |\n| **Rimanenze** | € 14.882.000 | € 14.864.000 | € 8.242.000 | -0,12% | -44,55% |\n| **Crediti Commerciali** | € 6.177.000 | € 10.250.000 | € 9.557.000 | **+65,94%** | -6,76% |\n| **Posizione Finanziaria Netta (PFN)** | € -11.346.000 | € -13.567.000 | € -17.299.000 | **-19,58%** | **-27,51%** |\n| **Rapporto PFN / EBITDA** | 2,83x | 3,16x | 15,94x | +11,66% | +404,43% |\n| **DSCR** | N.D. | N.D. | N.D. | - | - |\n\n#### Analisi del Capitale Circolante Netto (CCN):\n*   **Rimanenze:** Nel 2025 rimangono stabili a circa € 14,8M nonostante il lieve calo delle vendite, indicando un potenziale rallentamento dell'indice di rotazione del magazzino. Nel 2026 si dimezzano a € 8,24M (-44,55%), una riduzione che tuttavia non è proporzionale al crollo del fatturato (-76,81%), evidenziando un pericoloso accumulo di scorte obsolete o invendute che drena liquidità.\n*   **Crediti Commerciali:** Si rileva un'anomalia gestionale gravissima. Nel 2025, a fronte di vendite in calo, i crediti commerciali esplodono del **65,94%**, passando a € 10,25M. Ciò indica un deterioramento drastico dei tempi di incasso (DSO) o la concessione di dilazioni straordinarie per sostenere artificialmente le vendite. Nel 2026, nonostante il fatturato crolli a € 9,01M, i crediti commerciali si attestano a € 9,56M (valore superiore all'intero fatturato annuo). Tale dato è sintomo inequivocabile di crediti incagliati, insoluti non svalutati o di una fatturazione concentrata interamente a ridosso della chiusura dell'esercizio, circostanza che inficia la qualità dell'attivo circolante.\n\n#### Analisi dell'Indebitamento (PFN):\nLa Posizione Finanziaria Netta (espressa con segno negativo per indicare l'indebitamento netto) peggiora costantemente e in modo marcato:\n*   Nel 2025 l'indebitamento sale a € 13,57M (+19,58% YoY), trainato dal blocco finanziario dei crediti commerciali.\n*   Nel 2026 la PFN peggiora ulteriormente del 27,51% YoY, raggiungendo € 17,30M. \n*   Il moltiplicatore **PFN / EBITDA**, indicatore cardine per la sostenibilità del debito, passa da un accettabile 2,83x del 2024 a un drammatico **15,94x** nel 2026. Un valore superiore a 4,0x è generalmente considerato di massima allerta; un valore prossimo a 16x indica una totale insostenibilità del debito rispetto alla capacità di generazione di cassa corrente.\n\n---\n\n### 5. Analisi Sistema Bancario\n\nIn assenza di dati di Centrale Rischi (CR) dettagliati nel dataset, l'analisi deve basarsi sulla ricostruzione logica della PFN (€ -17,30M al 2026) rapportata alla dimensione aziendale.\n\n*   **Struttura del Debito:** L'incremento costante del debito finanziario in costanza di crollo del fatturato suggerisce che l'azienda ha fatto massiccio ricorso a linee di credito a breve termine (anticipo fatture, portafoglio SBF) e a finanziamenti d'emergenza per coprire il deficit di cassa generato dal circolante.\n*   **Tensione Finanziaria:** Con crediti commerciali pari a € 9,56M e un fatturato di € 9,01M, è altamente probabile che le linee di smobilizzo autoliquidanti siano sature o presentino elevati tassi di insoluto/proroga. Il sistema bancario si trova esposto su crediti commerciali difficilmente esigibili nel breve termine.\n*   **Rapporto con gli Istituti:** La richiesta di un finanziamento a medio-lungo termine chirografario/ipotecario appare come un tentativo di consolidamento di passività a breve termine (ristrutturazione del debito di fatto) piuttosto che un reale supporto a nuovi investimenti produttivi, i quali non troverebbero giustificazione economica alla luce del ridimensionamento industriale in atto.\n\n---\n\n### 6. Clienti e Fornitori\n\nLa catena del valore della Di Leo Nobile S.p.a. mostra segni di forte squilibrio contrattuale:\n\n*   **Parco Clienti:** Storicamente orientato verso la GDO e i canali d'importazione esteri. L'esplosione dei crediti commerciali nel 2025 e la loro persistenza nel 2026 indicano una forte concentrazione del rischio di credito su pochi key accounts, che potrebbero aver imposto condizioni di pagamento insostenibili o, peggio, essere entrati in stato di insolvenza, bloccando i flussi di incasso dell'affidando.\n*   **Parco Fornitori:** Composto principalmente da aziende agricole e cooperative locali per la materia prima, e da produttori di imballaggi. La normativa sui pagamenti in agricoltura (ex art. 62) impone termini di pagamento perentori (30/60 giorni). L'impossibilità di dilazionare i fornitori, unita al ritardo negli incassi dai clienti, ha generato la \"forbice finanziaria\" che ha cannibalizzato la liquidità aziendale, costringendo l'impresa a ricorrere al debito bancario (PFN peggiorata del 27,5% nel 2026).\n\n---\n\n### 7. Descrizione Operazione\n\nL'azienda richiede un'istruttoria di fidi ordinaria per l'erogazione di un **finanziamento a medio-lungo termine (chirografario o ipotecario)** volto a:\n1.  Sostenere lo smobilizzo del capitale circolante.\n2.  Finanziare non meglio precisati investimenti produttivi.\n\n#### Valutazione Tecnica dell'Operazione:\n*   **Incoerenza della Finalità:** Il finanziamento del capitale circolante (che per sua natura ha un ciclo di rientro a breve termine) tramite debito a medio-lungo termine chirografario configura un'operazione di consolidamento di perdite operative o di crediti incagliati.\n*   **Garanzia Ipotecaria:** La componente ipotecaria appare l'unica via percorribile per mitigare l'elevatissimo rischio di credito. Tuttavia, l'efficacia della garanzia è subordinata alla reale stima del valore di realizzo degli immobili industriali (spesso difficilmente liquidabili sul mercato).\n*   **Sostenibilità del Servizio del Debito:** In assenza di un DSCR calcolabile (indicato come N.D.) e con un EBITDA di soli € 1,08M a fronte di una PFN di € 17,30M, la capacità di rimborsare le rate di un nuovo finanziamento MLT è da ritenersi pressoché nulla, a meno di un radicale e immediato piano di ristrutturazione industriale.\n\n---\n\n### 8. Punti di Forza\n\nNonostante il quadro complessivo presenti criticità severe, si evidenziano i seguenti elementi di mitigazione del rischio:\n*   **Preservazione della Marginalità Percentuale:** L'EBITDA Margin si mantiene su livelli apprezzabili (12,04% nel 2026), dimostrando che, sebbene su volumi ridotti, l'efficienza industriale intrinseca del processo produttivo non è venuta meno.\n*   **Know-how e Posizionamento di Nicchia:** Il settore delle conserve alimentari di qualità conserva un valore intrinseco legato al \"Made in Italy\", che potrebbe favorire operazioni di fusione, acquisizione o partnership strategiche con player concorrenti.\n*   **Presenza di Attivi Patrimoniali:** La disponibilità di asset immobiliari industriali idonei alla costituzione di garanzie ipotecarie di primo grado rappresenta un elemento di parziale tutela per il ceto bancario.\n\n---\n\n### 9. Punti di Attenzione\n\nSi elencano i fattori di rischio critici che impongono la massima cautela e che, allo stato attuale, precludono un'approvazione ordinaria del credito:\n*   **Collasso del Fatturato (-76,81% nel 2026):** Mancanza di spiegazioni gestionali circa la perdita di oltre 30 milioni di euro di volume d'affari in soli 12 mesi.\n*   **Anomalia dei Crediti Commerciali:** Crediti commerciali (€ 9,56M) superiori al fatturato annuo (€ 9,01M) nel 2026. Elevatissimo rischio di svalutazioni massicce nell'attivo circolante.\n*   **Esplosione della Leva Finanziaria:** Rapporto PFN / EBITDA pari a 15,94x, ben oltre i limiti di tolleranza del sistema bancario.\n*   **Assenza di Indicatori di Sostenibilità (DSCR N.D.):** Impossibilità di verificare la capacità prospettica di rimborso del debito.\n*   **Rischio di \"Ristrutturazione Mascherata\":** Utilizzo del finanziamento MLT richiesto per ripianare linee a breve termine deteriorate, trasferendo il rischio commerciale in capo al debito strutturale della banca.\n\n---\n\n### 10. Temi di Approfondimento\n\nIn conformità alle procedure di *due diligence* fidi, si evidenziano i seguenti temi di approfondimento obbligatori, scaturiti dagli alert automatici di sistema:\n\n#### 🔹 Tema di Approfondimento 1\n*   **Dato rilevato:** ALERT [Crediti Commerciali]: I crediti commerciali sono cresciuti del 65,9% YoY nel 2025, raggiungendo € 10.250.000 a fronte di un fatturato in calo a € 38.852.000.\n*   **Interpretazione:** Tale dinamica evidenzia un blocco nel ciclo degli incassi. L'allungamento dei tempi medi di pagamento dei clienti (DSO) ha generato un fabbisogno finanziario imprevisto, coperto tramite indebitamento bancario. Vi è il forte sospetto che l'azienda abbia concesso dilazioni fuori mercato per mantenere i volumi di vendita o che vi siano contestazioni qualitative sulle merci consegnate.\n*   **Domanda Suggerita:** *\"Si richiede il dettaglio nominativo dei primi 10 crediti commerciali per anzianità di scaduto al 31/12/2025 e al 31/12/2026, con evidenza di eventuali piani di rientro concordati, azioni legali in corso o note di credito da emettere.\"*\n\n#### 🔹 Tema di Approfondimento 2\n*   **Dato rilevato:** ALERT [Posizione Finanziaria Netta (PFN)]: La PFN è peggiorata del 19,6% YoY nel 2025, passando da € -11.346.000 a € -13.567.000.\n*   **Interpretazione:** Il peggioramento della PFN nel 2025 è la diretta conseguenza finanziaria dell'assorbimento di cassa generato dall'esplosione dei crediti commerciali (+65,9%). L'autofinanziamento aziendale (EBITDA di € 4,30M) non è stato sufficiente a compensare il deficit del circolante, costringendo l'azienda a incrementare l'esposizione verso il sistema bancario.\n*   **Domanda Suggerita:** *\"Quali linee di credito bancarie sono state utilizzate per coprire il fabbisogno del circolante nel 2025? Si richiede la scomposizione della PFN tra debito a breve termine (autoliquidante e revoca) e debito a medio-lungo termine.\"*\n\n#### 🔹 Tema di Approfondimento 3\n*   **Dato rilevato:** ALERT [Posizione Finanziaria Netta (PFN)]: La PFN è peggiorata del 27,5% YoY nel 2026, raggiungendo € -17.299.000, a fronte di un EBITDA crollato a € 1.085.000.\n*   **Interpretazione:** Si tratta della criticità più grave. Nel 2026, nonostante il ridimensionamento dell'attività (fatturato a € 9M), l'indebitamento finanziario è aumentato di circa 3,7 milioni di euro. Ciò dimostra che l'azienda sta bruciando cassa a livello operativo e che il debito non è più correlato ai volumi di vendita, configurando una situazione di insolvenza prospettica (leverage a 15,94x).\n*   **Domanda Suggerita:** *\"Si richiede di chiarire le ragioni del crollo del fatturato nel 2026 e come l'organo amministrativo giustifichi il contemporaneo incremento del debito finanziario netto. È in atto un piano di ristrutturazione industriale o di dismissione di asset?\"*\n\n---\n\n### 11. Opportunità Commerciali\n\nPur in presenza di un profilo di rischio estremamente elevato che impone il congelamento di nuove concessioni di credito chirografario a medio-lungo termine, la banca può proporre soluzioni finanziarie strutturate volte a mettere in sicurezza l'esposizione e a supportare un eventuale piano di risanamento:\n\n1.  **Factoring Pro-Soluto (Smobilizzo e Garanzia del Credito):**\n    *   *Razionale:* A fronte di crediti commerciali per € 9,56M, la banca propone la cessione dei crediti commerciali di primaria qualità (GDO) tramite factoring pro-soluto.\n    *   *Obiettivo:* Consente di smobilizzare immediatamente liquidità per ridurre la PFN a breve termine e trasferire il rischio di insolvenza dei debitori in capo alla società di factoring, ripulendo l'attivo patrimoniale.\n2.  **Finanziamento a Breve Termine con Pegno Rotativo sui Prodotti in Magazzino:**\n    *   *Razionale:* Le rimanenze al 2026 ammontano a € 8,24M (conserve alimentari a lunga scadenza).\n    *   *Obiettivo:* Strutturare un finanziamento di scopo assistito da pegno rotativo non possessorio sulle scorte di prodotto finito valorizzabile. Questo consente di finanziare il magazzino riducendo il rischio di credito grazie alla garanzia reale sulle merci.\n3.  **Ristrutturazione del Debito MLT con Garanzia Pubblica (MCC / SACE) e Copertura Tasso (IRS):**\n    *   *Razionale:* Se l'azienda presenterà un piano industriale credibile di rilancio.\n    *   *Obiettivo:* Consolidare il debito a breve termine in un'unica operazione a medio-lungo termine assistita da garanzia statale (fino all'80%), riducendo l'assorbimento di capitale della banca. Abbinare un derivato di copertura (Interest Rate Swap - IRS) per proteggere l'azienda da fluttuazioni dei tassi d'interesse in una fase di delicata transizione.\n\n---\n\n### 12. Conclusione\n\n#### Parere del Senior Corporate Credit Manager: **SOSPENSIVO / NON FAVOREVOLE**\n\nL'istruttoria fidi per la concessione di un nuovo finanziamento a medio-lungo termine chirografario/ipotecario alle condizioni attuali **non può trovare accoglimento**. \n\nLe evidenze economico-finanziarie del triennio, e in particolare i dati dell'esercizio 2026, delineano un quadro di pre-crisi aziendale conclamata. Il crollo del fatturato del **76,81%**, associato a un livello di crediti commerciali superiore alle vendite annue e a un indicatore di leva finanziaria insostenibile (**PFN/EBITDA a 15,94x**), esclude la sussistenza del presupposto fondamentale per la concessione del credito: la capacità di rimborso prospettica.\n\n#### Condizioni tassative per la riapertura dell'istruttoria:\n1.  **Presentazione del Bilancio Certificato 2026** corredato da Nota Integrativa e Relazione sulla Gestione, per verificare la presenza di operazioni straordinarie che giustifichino il calo dei ricavi.\n2.  **Presentazione di un Piano Industriale e di Risanamento Finanziario** asseverato da un professionista indipendente, che illustri le azioni di recupero della redditività e di rientro dall'indebitamento.\n3.  **Audit completo sul portafoglio crediti** per quantificare la reale esigibilità dei € 9,56M iscritti in bilancio.\n4.  **Apporto di mezzi freschi** da parte della compagine sociale sotto forma di aumento di capitale sociale interamente versato, a dimostrazione del supporto degli azionisti.\n\nIn assenza di tali elementi, si raccomanda l'avvio di un monitoraggio stretto delle posizioni attualmente in essere presso il nostro Istituto, al fine di prevenire un deterioramento del credito e attivare tempestivamente le tutele contrattuali e reali disponibili.",
+    "descrizioneOperazione": "Istruttoria di fidi ordinaria per richiesta finanziamento a medio-lungo termine chirografario/ipotecario volto a sostenere lo smobilizzo circolante e investimenti produttivi.",
+    "originalFileName": "CEBI DI LEO NOBILE SPA.pdf"
+  },
+  {
+    "id": "pratica_sq622ob6f",
+    "aziendaName": "Di Leo Nobile - S.p.a. Industria Conserve Alimentari",
+    "numeroPratica": "CC-2026-DLN-CEBI",
+    "settoreAttivita": "Lavorazione e conservazione di frutta e di ortaggi (conserve, succhi di frutta e legumi)",
+    "docType": "CEBI",
+    "status": "Completata",
+    "dateCreated": "2026-06-01T13:51:39.889Z",
+    "financialData": [
+      {
+        "year": 2024,
+        "fatturato": 40040000,
+        "ebitda": 4010000,
+        "rimanenze": 14882000,
+        "creditiCommerciali": 6177000,
+        "pfn": -11346000,
+        "dscr": null
+      },
+      {
+        "year": 2025,
+        "fatturato": 38852000,
+        "ebitda": 4298000,
+        "rimanenze": 14864000,
+        "creditiCommerciali": 10250000,
+        "pfn": -13567000,
+        "dscr": null
+      }
+    ],
+    "forecastData": [
+      {
+        "year": 2025,
+        "ricavi": 38852000,
+        "ebitda": 4298000,
+        "ebitdaMargine": 11,
+        "pfnEbitda": 3.22,
+        "dscrAdjusted": 2.39,
+        "patrimonioNetto": 13781000,
+        "equityRatio": 26,
+        "fabbisognoBreve": -10909000,
+        "giorniMagazzino": 140,
+        "giorniClienti": 96,
+        "scoreLom": 66
+      },
+      {
+        "year": 2026,
+        "ricavi": 40500000,
+        "ebitda": 4950000,
+        "ebitdaMargine": 12.22,
+        "pfnEbitda": 2.85,
+        "dscrAdjusted": 3.01,
+        "patrimonioNetto": 15656000,
+        "equityRatio": 29,
+        "fabbisognoBreve": -10200000,
+        "giorniMagazzino": 136,
+        "giorniClienti": 94,
+        "scoreLom": 69
+      },
+      {
+        "year": 2027,
+        "ricavi": 42650000,
+        "ebitda": 5900000,
+        "ebitdaMargine": 13.83,
+        "pfnEbitda": 2.23,
+        "dscrAdjusted": 3.83,
+        "patrimonioNetto": 17756000,
+        "equityRatio": 32,
+        "fabbisognoBreve": -9100000,
+        "giorniMagazzino": 132,
+        "giorniClienti": 92,
+        "scoreLom": 72
+      },
+      {
+        "year": 2028,
+        "ricavi": 44150000,
+        "ebitda": 6100000,
+        "ebitdaMargine": 13.82,
+        "pfnEbitda": 2.02,
+        "dscrAdjusted": 4.21,
+        "patrimonioNetto": 19872000,
+        "equityRatio": 35,
+        "fabbisognoBreve": -8799000,
+        "giorniMagazzino": 130,
+        "giorniClienti": 92,
+        "scoreLom": 75
+      }
+    ],
+    "alerts": [
+      {
+        "type": "CREDITI_COMMERCIALI_GROWTH",
+        "metric": "Crediti Commerciali",
+        "triggered": true,
+        "message": "I crediti commerciali sono cresciuti del 65.9% YoY nel 2025, superando la soglia critica del 20%",
+        "severity": "high",
+        "yearCurrent": 2025,
+        "growthRate": 0.6593815768172252
+      },
+      {
+        "type": "RIMANENZE_GROWTH",
+        "metric": "Rimanenze / Magazzino",
+        "triggered": false,
+        "message": "Le rimanenze registrano una variazione del -0.1% YoY nel 2025 (sotto soglia di alert di 25%)",
+        "severity": "info",
+        "yearCurrent": 2025,
+        "growthRate": -0.001209514850154549
+      },
+      {
+        "type": "PFN_DETERIORATION",
+        "metric": "Posizione Finanziaria Netta (PFN)",
+        "triggered": true,
+        "message": "La PFN è peggiorata del 19.6% YoY nel 2025, superando la soglia di tolleranza del 15%",
+        "severity": "high",
+        "yearCurrent": 2025,
+        "growthRate": 0.19575180680416004
+      }
+    ],
+    "markdownReport": "# RELAZIONE COMMERCIALE EVOLUTA ED ISTRUTTORIA FIDI\n\n**A:** Direzione Crediti – Comitato Deliberante  \n**Da:** Senior Corporate Relationship Manager  \n**Data:** 25 Maggio 2026  \n**Pratica:** Rinnovo con incremento e strutturazione affidamenti a breve termine  \n**Soggetto Fiduciario:** Di Leo Nobile-S.P.A. Industria Conserve Alimentari  \n**NDG:** 3.759.318  \n**Codice Fiscale:** 01057390658  \n**Sede Legale:** Via S. Salvatore, 20 SN, 84083 Castel San Giorgio (SA)  \n\n---\n\n## 1. Profilo Aziendale / Descrizione Azienda\n\nLa **Di Leo Nobile-S.P.A. Industria Conserve Alimentari** è una storica realtà industriale campana, fondata il 24 luglio 1980, specializzata nella trasformazione e conservazione di prodotti ortofrutticoli, con particolare focus sui derivati del pomodoro. \n\nSotto il profilo della governance, l'azienda ha recentemente completato un cruciale processo di riorganizzazione e stabilizzazione degli assetti proprietari. Con atto notarile del **6 agosto 2025** (Notaio Oreste De Nicola, rep. 13.492, racc. 10.835), è stata ridefinita la compagine sociale, superando storiche divergenze familiari e consolidando il controllo in capo alla famiglia Di Leo. L'attuale azionariato vede come soci principali **Di Leo Gianroberto** (617.594 azioni, pari a circa il 42,7%) e **Di Leo Nobile** (271.141 azioni, pari a circa il 18,7%), affiancati da quote minori detenute da Di Leo Paola, Fortunata e Patrizia, oltre a una quota di azioni proprie in portafoglio (120.506 azioni).\n\nL'organo amministrativo è strutturato in un Consiglio di Amministrazione snello e coeso, composto da:\n*   **Vincenzo Di Leo** (Presidente del CdA)\n*   **Nobile Di Leo** (Consigliere con deleghe operative alla produzione e gestione industriale)\n*   **Natale Vitale** (Consigliere esterno)\n\nQuesta nuova architettura societaria garantisce un'elevata rapidità decisionale e una transizione generazionale di successo, coniugando l'esperienza storica dei fondatori con moderne competenze manageriali. La governance proattiva ha consentito di focalizzare l'attenzione sullo sviluppo commerciale e sull'efficientamento industriale, eliminando i rischi di stallo decisionale tipici delle imprese familiari non pacificate.\n\n---\n\n## 2. Analisi Settoriale, Attività & Prodotti\n\nL'azienda opera nel settore della trasformazione del pomodoro da industria (codice **ATECO 10.39** - *\"Altre attività di lavorazione e conservazione di frutta e di ortaggi\"*). Il mix produttivo è altamente specializzato e comprende:\n*   **Pomodori Pelati**: Prodotto premium destinato principalmente al canale retail ed export.\n*   **Polpa di Pomodoro**: Destinata sia al canale retail che al canale industriale/Horeca.\n*   **Passata di Pomodoro**: Prodotto a elevato valore aggiunto, caratterizzato da una domanda stabile e destagionalizzata.\n\nIl settore è caratterizzato da una **rigidissima stagionalità agraria e industriale**, concentrata nel periodo compreso tra **luglio e ottobre** (la cosiddetta \"Campagna del Pomodoro\"). Durante questi mesi, l'azienda deve acquistare l'intera materia prima annuale dai produttori agricoli associati (OP), procedere alla trasformazione immediata nei propri impianti di Castel San Giorgio e stoccare il prodotto finito nei magazzini. \n\nQuesto ciclo industriale determina un massiccio assorbimento di cassa e un picco del capitale circolante (rimanenze) nel terzo trimestre dell'anno, che viene poi progressivamente smobilizzato e monetizzato nei restanti 8-9 mesi attraverso le vendite ai canali della Grande Distribuzione Organizzata (GDO) e dell'industria alimentare.\n\n---\n\n## 3. Analisi Economica (Fatturato, EBITDA)\n\nL'andamento economico della Di Leo Nobile-S.P.A. evidenzia una crescita solida e sostenibile, supportata da un incremento dei prezzi medi di vendita e da un ottimo posizionamento di mercato.\n\n```\n+------------------------+-------------+-------------+-------------+-------------+\n| Voce di Conto Economico|   12/2025   |   12/2026   |   12/2027   |   12/2028   |\n| (Valori in €/000)      | (Consolid.) | (Previs.)   | (Previs.)   | (Previs.)   |\n+------------------------+-------------+-------------+-------------+-------------+\n| Ricavi delle Vendite   |    38.852   |    40.500   |    42.650   |    44.150   |\n| Valore della Produzione|    39.239   |    41.150   |    43.300   |    44.800   |\n| EBITDA (MOL)           |     4.298   |     4.950   |     5.900   |     6.100   |\n| EBITDA Margin (%)      |     11,06%  |     12,22%  |     13,83%  |     13,82%  |\n| Risultato Operativo    |     3.159   |     3.795   |     4.740   |     5.000   |\n| Utile Netto            |     1.766   |     1.875   |     2.100   |     2.375   |\n+------------------------+-------------+-------------+-------------+-------------+\n```\n\n### Commento all'andamento economico:\n*   **Fatturato**: Nel 2025 i ricavi si sono attestati a €38,85 milioni. Le proiezioni previsionali indicano una crescita costante, stimata a €40,5 milioni per il 2026 (+4,2%) e fino a €44,15 milioni nel 2028. Tale dinamica è sostenuta dall'espansione sui mercati esteri e dal consolidamento dei contratti di co-packing con primari brand nazionali.\n*   **Redditività (EBITDA)**: L'EBITDA mostra un trend di crescita estremamente positivo, passando da €4,29 milioni (11,06% sui ricavi) nel 2025 a €4,95 milioni nel 2026, per poi stabilizzarsi sopra i €6 milioni nel 2028 (EBITDA margin al 13,82%). Questo incremento della marginalità operativa è guidato dall'efficientamento dei costi industriali (grazie ai recenti investimenti in macchinari di selezione ottica e risparmio energetico) e da un miglioramento del mix di prodotto a favore di referenze a maggior valore aggiunto (passate e polpe speciali).\n*   **Utile Netto**: La redditività netta si mantiene solida e in costante crescita, con un utile previsto in aumento da €1,76 milioni (2025) a €2,37 milioni (2028), interamente accantonato a riserva per rafforzare la struttura patrimoniale dell'azienda.\n\n---\n\n## 4. Analisi Finanziaria & PFN\n\nLa struttura finanziaria della Di Leo Nobile-S.P.A. riflette la tipica ciclicità del comparto conserviero, caratterizzato da un elevato fabbisogno di capitale circolante netto durante la campagna estiva.\n\n```\n+------------------------+-------------+-------------+-------------+-------------+\n| Voce Finanziaria       |   12/2025   |   12/2026   |   12/2027   |   12/2028   |\n| (Valori in €/000)      | (Consolid.) | (Previs.)   | (Previs.)   | (Previs.)   |\n+------------------------+-------------+-------------+-------------+-------------+\n| Debiti Banche a M/L    |     2.045   |     1.850   |     1.650   |     1.450   |\n| Debiti Banche a Breve  |    12.023   |    12.500   |    11.800   |    11.200   |\n| Liquidità              |       207   |       250   |       300   |       350   |\n| PFN (Pos. Finanz. Netta|   -13.861   |   -14.100   |   -13.150   |   -12.300   |\n| PFN / EBITDA (x)       |      3,22   |      2,85   |      2,23   |      2,02   |\n| DSCR Adjusted          |      2,39   |      3,01   |      3,83   |      4,21   |\n+------------------------+-------------+-------------+-------------+-------------+\n```\n\n### Analisi della Posizione Finanziaria Netta e del Leverage:\n*   **Composizione del Debito**: La PFN al 31/12/2025 era pari a €13,86 milioni, composta prevalentemente da debito bancario a breve termine (€12,02 milioni), utilizzato per finanziare le scorte di magazzino accumulate durante la campagna. Il debito a medio-lungo termine è estremamente contenuto (€2,04 milioni) e in costante ammortamento.\n*   **Sostenibilità del Debito (PFN/EBITDA)**: Il rapporto PFN/EBITDA si attesta a un livello ampiamente sostenibile di **3,22x** nel 2025, con una netta traiettoria di miglioramento prevista a **2,85x** nel 2026 e fino a **2,02x** nel 2028. Questo trend dimostra la capacità dell'azienda di autofinanziare la propria crescita e di ridurre progressivamente la dipendenza dal debito di terzi.\n*   **DSCR (Debt Service Coverage Ratio)**: L'indice di copertura del servizio del debito si attesta a **2,39x** nel 2025 e si prevede in crescita fino a **4,21x** nel 2028. Valori ampiamente superiori alla soglia di attenzione (1,00x), che confermano l'eccellente capacità di generazione di cassa operativa a servizio del debito finanziario.\n*   **Ciclo del Circolante**: I giorni magazzino (140 giorni nel 2025) e i giorni clienti (96 giorni) sono strutturalmente compensati da un'estesa dilazione di pagamento concessa dai fornitori di imballaggi e materie prime (giorni fornitori pari a 245 nel 2025). Ciò determina un CCNO (Capitale Circolante Netto Operativo) negativo in termini di giorni di ciclo (-109 giorni), che rappresenta un importante polmone finanziario per l'azienda.\n\n---\n\n## 5. Analisi Sistema Bancario & Centrale Rischi\n\nL'analisi della Centrale Rischi di sistema al **31/03/2026** evidenzia una gestione degli affidamenti estremamente regolare e un forte supporto da parte del sistema bancario nazionale.\n\n### Sintesi Centrale Rischi (Dati in €/000):\n*   **Rischi Autoliquidanti (Smobilizzo Commerciale)**:\n    *   Accordato di Sistema: **€4.934k**\n    *   Utilizzato di Sistema: **€4.914k** (Tasso di utilizzo: **99,6%**)\n    *   *Commento*: L'utilizzo pressoché totale delle linee autoliquidanti è fisiologico per il settore e riflette l'intensa attività di monetizzazione del portafoglio ordini e fatture post-campagna. Non si registrano insoluti significativi o tensioni di liquidità.\n*   **Rischi a Scadenza (Finanziamenti a M/L)**:\n    *   Accordato di Sistema: **€12.409k**\n    *   Utilizzato di Sistema: **€12.294k**\n    *   *Commento*: Esposizione regolare, assistita da importanti garanzie istituzionali (SACE S.p.A. per €2,1 milioni e Fondo di Garanzia MCC per €1,35 milioni), che mitigano sensibilmente il rischio di credito per il sistema bancario.\n*   **Rischi a Revoca (Cassa/Elasticità)**:\n    *   Accordato di Sistema: **€231k**\n    *   Utilizzato di Sistema: **€159k**\n*   **Sofferenze / Sconfinamenti**: **ZERO**. Non si rileva alcuna segnalazione a sofferenza, incaglio o sconfinamento strutturale sull'intero sistema bancario. La regolarità dei pagamenti è assoluta.\n\n---\n\n## 6. Clienti, Fornitori & Organizzazione Commerciale\n\n### Clienti e Canali di Vendita:\nLa Di Leo Nobile-S.P.A. vanta un portafoglio clienti di primario standing, suddiviso tra:\n1.  **Grande Distribuzione Organizzata (GDO)** nazionale ed internazionale.\n2.  **Co-packing / Clienti Industriali**: L'azienda è partner strategico di grandi marchi del settore conserviero (tra cui spicca la collaborazione con **Mutti S.p.A.** per specifiche linee di produzione), a conferma degli elevatissimi standard qualitativi e igienico-sanitari degli impianti.\n3.  **Export**: La quota export rappresenta circa il **35% del fatturato** ed è indirizzata verso mercati esteri maturi e stabili come **Giappone, Canada, Australia e Unione Europea**. La diversificazione geografica mette al riparo l'azienda da tensioni tariffarie o dazi, grazie a contratti di fornitura pluriennali con importatori storici.\n\n### Fornitori e Approvvigionamento:\n*   **Materia Prima (Pomodoro)**: L'approvvigionamento avviene tramite contratti di filiera stipulati con Organizzazioni di Produttori (OP) del bacino meridionale (Puglia e Campania), garantendo la tracciabilità totale e la stabilità dei prezzi di acquisto.\n*   **Packaging (Bande stagnate e vetro)**: L'azienda collabora con leader di settore, tra cui **Tecnocap S.p.A.** (primaria multinazionale del packaging metallico). Come rilevato in Centrale Rischi, la Di Leo Nobile-S.P.A. gestisce flussi di factoring pro-soluto/pro-solvendo con Tecnocap per €86k su €97k accordati, a dimostrazione della forte integrazione finanziaria e commerciale con i propri partner industriali.\n\n---\n\n## 7. Descrizione Operazione & Affidamenti Richiesti\n\nAl fine di supportare adeguatamente la prossima Campagna del Pomodoro 2026 e ottimizzare la gestione della liquidità corrente, si propone la strutturazione del seguente pacchetto di affidamenti a breve termine:\n\n| Linea di Credito Proposta | Importo Richiesto | Durata / Ammortamento | Tasso / Condizioni | Motivazione Commerciale & Destinazione |\n| :--- | :---: | :---: | :---: | :--- |\n| **Fido di Campagna** | €1.000.000 | 13 mesi (con 5 mesi di ammortamento finale) | Euribor 3M + 2,50% | Finanziamento straordinario per l'acquisto di materia prima e imballaggi durante il picco stagionale (luglio-ottobre). L'ammortamento in 5 mesi consente il rientro graduale tramite la vendita delle scorte. |\n| **Anticipo Fatture / SBF Promiscuo** | €500.000 | A revoca (scadenza indeterminata) | Euribor 3M + 2,25% | Linea promiscua per lo smobilizzo dei crediti commerciali Italia/Estero (portafoglio RI.BA. e fatture GDO/Mutti), volta a ottimizzare il cash flow operativo. |\n\n### Mitigazione del Rischio dell'Operazione:\n*   Il **Fido di Campagna** è strutturato con un piano di rientro rigido che ricalca il ciclo di monetizzazione del magazzino.\n*   Le linee di smobilizzo sono autoliquidanti per definizione e poggiano su debitori di primario standing creditizio (GDO e grandi marchi industriali).\n\n---\n\n## 8. Punti di Forza Commerciali\n\n*   **Governance Stabilizzata**: Il riassetto societario dell'agosto 2025 ha eliminato ogni conflittualità interna, consegnando la guida dell'azienda a un management coeso, rapido e focalizzato sul business.\n*   **Qualità dei Clienti (Co-packing Mutti)**: La partnership con player del calibro di Mutti S.p.A. certifica l'eccellenza qualitativa dei processi produttivi e garantisce volumi di vendita stabili e ricorrenti.\n*   **Diversificazione Geografica (Export)**: La presenza consolidata in mercati extra-UE (Giappone, Canada, Australia) garantisce ottimi margini e riduce il rischio di concentrazione sul mercato domestico.\n*   **Regolarità Finanziaria Assoluta**: Centrale Rischi impeccabile, assenza totale di sconfini, DURC regolare e assenza di debiti scaduti verso i fornitori strategici.\n*   **Investimenti Conclusi con Successo**: Gli investimenti effettuati nel biennio precedente hanno incrementato la capacità produttiva e l'efficienza energetica, i cui benefici si riflettono sul costante aumento dell'EBITDA margin (previsto al 12,22% nel 2026 e al 13,83% nel 2027).\n\n---\n\n## 9. Punti di Attenzione & Debolezze Mitigate\n\n*   **Forte Stagionalità del Settore**: Il business assorbe ingenti risorse finanziarie concentrate in pochi mesi dell'anno.\n    *   *Mitigazione*: La struttura degli affidamenti proposti (Fido di Campagna dedicato con ammortamento mirato) è disegnata appositamente per assecondare questa ciclicità, garantendo la copertura finanziaria senza gravare sulla liquidità ordinaria.\n*   **Concentrazione del Fatturato su Grandi Clienti**: La presenza di contratti di co-packing con grandi marchi espone l'azienda al rischio di concentrazione.\n    *   *Mitigazione*: Si tratta di una prassi consolidata del settore conserviero. I rapporti sono regolati da contratti pluriennali e i debitori presentano un profilo di rischio di credito estremamente basso (GDO e multinazionali alimentari), azzerando di fatto il rischio di mancato incasso.\n*   **Elevato Tasso di Utilizzo delle Linee di Credito (Centrale Rischi al 98%)**:\n    *   *Mitigazione*: L'utilizzo quasi integrale delle linee autoliquidanti è temporaneo e fisiologico nel periodo post-campagna. È compensato dalla rapidità di rotazione del portafoglio crediti e dalla progressiva riduzione delle scorte di magazzino.\n\n---\n\n## 10. Temi di Approfondimento\n\nIn sede di istruttoria, sono stati analizzati i principali indicatori di bilancio e di Centrale Rischi. Di seguito si riportano i temi di approfondimento rilevati, strutturati secondo il formato metodologico richiesto:\n\n🔹 **Dato rilevato**: Elevata incidenza dei debiti bancari a breve termine (€12,02 milioni al 31/12/2025) rispetto al totale dei debiti finanziari.  \n🔹 **Interpretazione**: Questa struttura del debito è la diretta conseguenza del finanziamento del capitale circolante (scorte di magazzino) accumulato durante la campagna estiva. Non rappresenta uno squilibrio strutturale, bensì una caratteristica fisiologica del settore conserviero.  \n🔹 **Domanda Suggerita**: *\"Può il management confermare che il piano di smobilizzo del magazzino 2026 prevede la totale estinzione delle linee di cassa e di campagna entro l'avvio della campagna successiva (giugno 2027)?\"*  \n\n---\n\n🔹 **Dato rilevato**: Giorni medi di magazzino pari a 140 giorni nel 2025, stabili nelle proiezioni previsionali (136 giorni nel 2026, 132 nel 2027).  \n🔹 **Interpretazione**: Il dato riflette la necessità industriale di stoccare in soli 3 mesi il prodotto che verrà venduto nei successivi 12 mesi. La stabilità del dato conferma l'efficienza della rete commerciale nel garantire una rotazione costante delle scorte senza accumuli obsoleti.  \n🔹 **Domanda Suggerita**: *\"Quali sono le coperture assicurative in essere a tutela del valore delle merci stoccate nei magazzini contro i rischi di incendio, deperimento o danni da eventi atmosferici?\"*  \n\n---\n\n🔹 **Dato rilevato**: Tasso di utilizzo delle linee autoliquidanti in Centrale Rischi costantemente vicino al 98-99% nel primo trimestre 2026.  \n🔹 **Interpretazione**: L'elevato utilizzo dimostra l'efficace e tempestiva presentazione allo smobilizzo delle fatture emesse verso la GDO. L'assenza di insoluti conferma la bontà del portafoglio crediti presentato.  \n🔹 **Domanda Suggerita**: *\"L'azienda prevede di incrementare la quota di crediti ceduti tramite canali di factoring per diversificare le fonti di smobilizzo e alleggerire l'esposizione sul canale bancario ordinario?\"*  \n\n---\n\n## 11. Opportunità Commerciali (Cross-selling)\n\nLa solida situazione finanziaria e la struttura operativa della Di Leo Nobile-S.P.A. aprono eccellenti opportunità di cross-selling per la nostra banca, con l'obiettivo di incrementare la redditività complessiva della relazione (Share of Wallet):\n\n1.  **Programma di Factoring Reverse / Confirming**: Proposta di una piattaforma di Factoring per gestire i pagamenti della filiera dei fornitori di imballaggi (es. Tecnocap S.p.A.) e dei produttori agricoli. Questo consentirebbe alla banca di generare commissioni attive e all'azienda di ottimizzare ulteriormente i giorni di pagamento dei fornitori.\n2.  **Leasing Strumentale**: Finanziamento tramite la nostra società di leasing per l'acquisto di nuovi macchinari di confezionamento ad alta velocità e impianti di efficientamento idrico (previsti nel piano investimenti 2026-2027), beneficiando delle agevolazioni Transizione 5.0.\n3.  **Copertura Rischio Tasso (IRS - Interest Rate Swap)**: Proposta di contratti derivati di copertura (IRS) a protezione dal rischio di rialzo dei tassi d'interesse sui finanziamenti a medio-lungo termine in essere e di futura erogazione.\n4.  **Linee Export Dedicate**: Strutturazione di linee di anticipo export assistite da polizze assicurative SACE per proteggere il fatturato generato sui mercati extra-UE (Giappone, Canada).\n\n---\n\n## 12. Conclusione & Sintesi Propositiva\n\nAlla luce dell'analisi effettuata, si esprime un **PARERE COMMERCIALMENTE FAVOREVOLE** alla concessione degli affidamenti richiesti.\n\nLa **Di Leo Nobile-S.P.A.** rappresenta una controparte di eccellente standing creditizio nel panorama dell'industria conserviera meridionale. La recente e definitiva stabilizzazione della governance familiare ha rimosso l'unico vero fattore di attenzione storico, restituendo al mercato un'azienda solida, reattiva e altamente performante.\n\nI dati economico-finanziari storici e previsionali confermano una redditività in costante crescita (EBITDA margin verso il 13,8%), una struttura patrimoniale robusta (Equity Ratio al 26% in crescita al 35% nel 2028) e indici di copertura del debito ampiamente rassicuranti (DSCR > 2,3x). La Centrale Rischi impeccabile e la partnership industriale con leader di mercato come Mutti S.p.A. azzerano di fatto il rischio di credito.\n\nLa strutturazione proposta (Fido di Campagna con rientro mirato e linea autoliquidante) risponde perfettamente alle esigenze industriali dell'azienda e garantisce alla banca un'adeguata redditività e un controllo costante dei flussi di cassa.\n\nSi invita pertanto l'analista fidi e il deliberante a procedere con l'approvazione della pratica.",
+    "descrizioneOperazione": "FIDO DI CAMPagna 1000 mlon euro 1 13 mesi con 5 mesi di ammortamento . Anticipo Fatture E SBAF Promiscuo per 500K€ ",
+    "uploadedFiles": {
+      "lom": {
+        "fileName": "LOM.pdf",
+        "fileType": "application/pdf",
+        "dateUploaded": "2026-06-01T13:51:48.697Z"
+      },
+      "businessPlan": {
+        "fileName": "Analisi Previsionali CLIENTE (BILCE).pdf",
+        "fileType": "application/pdf",
+        "dateUploaded": "2026-06-01T13:52:16.231Z"
+      },
+      "elencoFinanziamenti": {
+        "fileName": "prospetto affidamenti.pdf",
+        "fileType": "application/pdf",
+        "dateUploaded": "2026-06-01T13:52:29.017Z"
+      },
+      "centraleRischi": {
+        "fileName": "cr di leo nobiler.pdf",
+        "fileType": "application/pdf",
+        "dateUploaded": "2026-06-01T13:52:35.487Z"
+      },
+      "cebi": {
+        "fileName": "CEBI DI LEO NOBILE SPA.pdf",
+        "fileType": "application/pdf",
+        "dateUploaded": "2026-06-01T14:28:56.294Z"
+      },
+      "bilce": {
+        "fileName": "Analisi Previsionali CLIENTE (BILCE).pdf",
+        "fileType": "application/pdf",
+        "dateUploaded": "2026-06-01T13:53:11.750Z"
+      },
+      "relazioneGestione": {
+        "fileName": "Relazione sulla Gestione bilancio 2025.pdf",
+        "fileType": "application/pdf",
+        "dateUploaded": "2026-06-01T13:53:37.323Z"
+      }
+    },
+    "originalFileName": "CEBI DI LEO NOBILE SPA.pdf"
+  },
+  {
+    "id": "pratica_7re7yipu6",
+    "aziendaName": "TRE STELLE FOOD S.r.l.",
+    "numeroPratica": "TS-2026-FOOD",
+    "settoreAttivita": "Commercio all'ingrosso e produzione di generi alimentari e prodotti caseari",
+    "docType": "BILCe",
+    "status": "Completata",
+    "dateCreated": "2026-06-01T13:59:46.618Z",
+    "financialData": [
+      {
+        "year": 2023,
+        "fatturato": 3287070,
+        "ebitda": 571478,
+        "rimanenze": 450000,
+        "creditiCommerciali": 1210000,
+        "pfn": -1930000,
+        "dscr": 1.8
+      },
+      {
+        "year": 2024,
+        "fatturato": 6631863,
+        "ebitda": 2279261,
+        "rimanenze": 520000,
+        "creditiCommerciali": 3120000,
+        "pfn": -4340000,
+        "dscr": 1.95
+      },
+      {
+        "year": 2025,
+        "fatturato": 6991621,
+        "ebitda": 2298389,
+        "rimanenze": 595000,
+        "creditiCommerciali": 3357000,
+        "pfn": -5047000,
+        "dscr": null
+      }
+    ],
+    "forecastData": [
+      {
+        "year": 2026,
+        "ricavi": 7289000,
+        "ebitda": 2655000,
+        "ebitdaMargine": 36.42,
+        "pfnEbitda": 1.66,
+        "dscrAdjusted": 2.5,
+        "patrimonioNetto": 5500000,
+        "equityRatio": 45,
+        "fabbisognoBreve": -1500000,
+        "giorniMagazzino": 136,
+        "giorniClienti": 94,
+        "scoreLom": 72
+      },
+      {
+        "year": 2027,
+        "ricavi": 7872000,
+        "ebitda": 2816000,
+        "ebitdaMargine": 35.77,
+        "pfnEbitda": 1.01,
+        "dscrAdjusted": 3.1,
+        "patrimonioNetto": 7500000,
+        "equityRatio": 52,
+        "fabbisognoBreve": -1200000,
+        "giorniMagazzino": 132,
+        "giorniClienti": 92,
+        "scoreLom": 75
+      },
+      {
+        "year": 2028,
+        "ricavi": 8108000,
+        "ebitda": 2898000,
+        "ebitdaMargine": 35.74,
+        "pfnEbitda": 0.42,
+        "dscrAdjusted": 3.8,
+        "patrimonioNetto": 9500000,
+        "equityRatio": 60,
+        "fabbisognoBreve": -1000000,
+        "giorniMagazzino": 130,
+        "giorniClienti": 90,
+        "scoreLom": 78
+      },
+      {
+        "year": 2029,
+        "ricavi": 8351000,
+        "ebitda": 2983000,
+        "ebitdaMargine": 35.72,
+        "pfnEbitda": 0,
+        "dscrAdjusted": 4.5,
+        "patrimonioNetto": 11500000,
+        "equityRatio": 68,
+        "fabbisognoBreve": -800000,
+        "giorniMagazzino": 125,
+        "giorniClienti": 88,
+        "scoreLom": 82
+      },
+      {
+        "year": 2030,
+        "ricavi": 8602000,
+        "ebitda": 3071000,
+        "ebitdaMargine": 35.7,
+        "pfnEbitda": 0,
+        "dscrAdjusted": 5.2,
+        "patrimonioNetto": 13500000,
+        "equityRatio": 75,
+        "fabbisognoBreve": -500000,
+        "giorniMagazzino": 120,
+        "giorniClienti": 85,
+        "scoreLom": 85
+      },
+      {
+        "year": 2031,
+        "ricavi": 8860000,
+        "ebitda": 3164000,
+        "ebitdaMargine": 35.71,
+        "pfnEbitda": 0,
+        "dscrAdjusted": 6,
+        "patrimonioNetto": 15500000,
+        "equityRatio": 82,
+        "fabbisognoBreve": -300000,
+        "giorniMagazzino": 115,
+        "giorniClienti": 82,
+        "scoreLom": 88
+      }
+    ],
+    "alerts": [
+      {
+        "type": "CREDITI_COMMERCIALI_GROWTH",
+        "metric": "Crediti Commerciali",
+        "triggered": false,
+        "message": "I crediti commerciali registrano una variazione del 3.0% YoY nel 2026 (sotto soglia di alert di 20%)",
+        "severity": "info",
+        "yearCurrent": 2026,
+        "growthRate": 0.02978850163836759
+      },
+      {
+        "type": "RIMANENZE_GROWTH",
+        "metric": "Rimanenze / Magazzino",
+        "triggered": true,
+        "message": "Le rimanenze sono cresciute del 149.9% YoY nel 2026, superando la soglia critica del 25%",
+        "severity": "high",
+        "yearCurrent": 2026,
+        "growthRate": 1.4991596638655462
+      },
+      {
+        "type": "PFN_DETERIORATION",
+        "metric": "Posizione Finanziaria Netta (PFN)",
+        "triggered": false,
+        "message": "La PFN registra una variazione patrimoniale del -12.6% YoY nel 2026 (sotto la soglia di alert di 15%)",
+        "severity": "info",
+        "yearCurrent": 2026,
+        "growthRate": -0.12641172974043988
+      },
+      {
+        "type": "CREDITI_COMMERCIALI_GROWTH",
+        "metric": "Crediti Commerciali",
+        "triggered": false,
+        "message": "I crediti commerciali registrano una variazione del 5.0% YoY nel 2027 (sotto soglia di alert di 20%)",
+        "severity": "info",
+        "yearCurrent": 2027,
+        "growthRate": 0.050043390222736475
+      },
+      {
+        "type": "RIMANENZE_GROWTH",
+        "metric": "Rimanenze / Magazzino",
+        "triggered": false,
+        "message": "Le rimanenze registrano una variazione del -10.0% YoY nel 2027 (sotto soglia di alert di 25%)",
+        "severity": "info",
+        "yearCurrent": 2027,
+        "growthRate": -0.10020174848688634
+      },
+      {
+        "type": "PFN_DETERIORATION",
+        "metric": "Posizione Finanziaria Netta (PFN)",
+        "triggered": false,
+        "message": "La PFN registra una variazione patrimoniale del -35.6% YoY nel 2027 (sotto la soglia di alert di 15%)",
+        "severity": "info",
+        "yearCurrent": 2027,
+        "growthRate": -0.35563619868450896
+      },
+      {
+        "type": "CREDITI_COMMERCIALI_GROWTH",
+        "metric": "Crediti Commerciali",
+        "triggered": false,
+        "message": "I crediti commerciali registrano una variazione del 5.0% YoY nel 2028 (sotto soglia di alert di 20%)",
+        "severity": "info",
+        "yearCurrent": 2028,
+        "growthRate": 0.050137741046831955
+      },
+      {
+        "type": "RIMANENZE_GROWTH",
+        "metric": "Rimanenze / Magazzino",
+        "triggered": false,
+        "message": "Le rimanenze registrano una variazione del -9.9% YoY nel 2028 (sotto soglia di alert di 25%)",
+        "severity": "info",
+        "yearCurrent": 2028,
+        "growthRate": -0.09940209267563528
+      },
+      {
+        "type": "PFN_DETERIORATION",
+        "metric": "Posizione Finanziaria Netta (PFN)",
+        "triggered": false,
+        "message": "La PFN registra una variazione patrimoniale del -57.1% YoY nel 2028 (sotto la soglia di alert di 15%)",
+        "severity": "info",
+        "yearCurrent": 2028,
+        "growthRate": -0.570925730376628
+      },
+      {
+        "type": "CREDITI_COMMERCIALI_GROWTH",
+        "metric": "Crediti Commerciali",
+        "triggered": false,
+        "message": "I crediti commerciali registrano una variazione del 5.0% YoY nel 2029 (sotto soglia di alert di 20%)",
+        "severity": "info",
+        "yearCurrent": 2029,
+        "growthRate": 0.049842602308499476
+      },
+      {
+        "type": "RIMANENZE_GROWTH",
+        "metric": "Rimanenze / Magazzino",
+        "triggered": false,
+        "message": "Le rimanenze registrano una variazione del -10.0% YoY nel 2029 (sotto soglia di alert di 25%)",
+        "severity": "info",
+        "yearCurrent": 2029,
+        "growthRate": -0.1004149377593361
+      },
+      {
+        "type": "PFN_DETERIORATION",
+        "metric": "Posizione Finanziaria Netta (PFN)",
+        "triggered": false,
+        "message": "La PFN registra una variazione patrimoniale del -132.8% YoY nel 2029 (sotto la soglia di alert di 15%)",
+        "severity": "info",
+        "yearCurrent": 2029,
+        "growthRate": -1.328137817883511
+      },
+      {
+        "type": "CREDITI_COMMERCIALI_GROWTH",
+        "metric": "Crediti Commerciali",
+        "triggered": false,
+        "message": "I crediti commerciali registrano una variazione del 5.0% YoY nel 2030 (sotto soglia di alert di 20%)",
+        "severity": "info",
+        "yearCurrent": 2030,
+        "growthRate": 0.05022488755622189
+      },
+      {
+        "type": "RIMANENZE_GROWTH",
+        "metric": "Rimanenze / Magazzino",
+        "triggered": false,
+        "message": "Le rimanenze registrano una variazione del 3.0% YoY nel 2030 (sotto soglia di alert di 25%)",
+        "severity": "info",
+        "yearCurrent": 2030,
+        "growthRate": 0.03044280442804428
+      },
+      {
+        "type": "PFN_DETERIORATION",
+        "metric": "Posizione Finanziaria Netta (PFN)",
+        "triggered": false,
+        "message": "La PFN registra una variazione patrimoniale del -386.0% YoY nel 2030 (sotto la soglia di alert di 15%)",
+        "severity": "info",
+        "yearCurrent": 2030,
+        "growthRate": -3.86
+      },
+      {
+        "type": "CREDITI_COMMERCIALI_GROWTH",
+        "metric": "Crediti Commerciali",
+        "triggered": false,
+        "message": "I crediti commerciali registrano una variazione del 5.0% YoY nel 2031 (sotto soglia di alert di 20%)",
+        "severity": "info",
+        "yearCurrent": 2031,
+        "growthRate": 0.049964311206281226
+      },
+      {
+        "type": "RIMANENZE_GROWTH",
+        "metric": "Rimanenze / Magazzino",
+        "triggered": false,
+        "message": "Le rimanenze registrano una variazione del 3.0% YoY nel 2031 (sotto soglia di alert di 25%)",
+        "severity": "info",
+        "yearCurrent": 2031,
+        "growthRate": 0.02954341987466428
+      },
+      {
+        "type": "PFN_DETERIORATION",
+        "metric": "Posizione Finanziaria Netta (PFN)",
+        "triggered": false,
+        "message": "La PFN registra una variazione patrimoniale del -83.7% YoY nel 2031 (sotto la soglia di alert di 15%)",
+        "severity": "info",
+        "yearCurrent": 2031,
+        "growthRate": -0.8374485596707819
+      }
+    ],
+    "markdownReport": "# RELAZIONE COMMERCIALE EVOLUTA ED ISTRUTTORIA FIDI\n**SOCIETÀ:** TRE STELLE FOOD S.r.l.  \n**SETTORE:** Commercio all'ingrosso e produzione di generi alimentari e prodotti caseari  \n**GESTORE:** Senior Corporate Relationship Manager  \n\n---\n\n### 1. Profilo Aziendale & Governance\n**[PROFILO AZIENDALE: ECCELLENZA OPERATIVA]**\n\n> 📌 **NOTA DI DIREZIONE COMMERCIALE:** *L'azienda esibisce un posizionamento d'eccellenza che ammortizza la stagionalità tipica del settore tramite solide dinamiche di prenotazione dei volumi con partner storici.*\n\nLa **TRE STELLE FOOD S.r.l.** rappresenta una delle realtà più dinamiche e promettenti nel panorama agroindustriale del Mezzogiorno d'Italia. Costituita il 29 maggio 2019 su iniziativa del giovane e lungimirante imprenditore **Antonio Volpe** (inizialmente denominata \"ANTONIO FISH PRODOTTI ALIMENTARI S.R.L.S.\"), la società ha vissuto un'evoluzione strategica straordinaria. L'8 marzo 2022, contestualmente alla trasformazione in S.r.l., l'azienda ha assunto l'attuale denominazione, ispirata alla volontà di coinvolgere la compagine familiare. Oggi, la proprietà è interamente concentrata nelle mani di Antonio Volpe, che detiene il 100% delle quote sociali in qualità di Socio Unico e Amministratore Unico.\n\nLa governance, sebbene formalmente accentrata nella figura del fondatore, si avvale di un management team di altissimo profilo e di comprovata esperienza nel settore, tra cui spiccano le figure chiave di **Savino** e del gruppo della **famiglia Campanile**. Questa struttura organizzativa garantisce una straordinaria reattività decisionale unita a una rigorosa pianificazione strategica. Il passaggio da pura attività di distribuzione all'ingrosso (avviata in un magazzino di soli 100 mq con 5 clienti) a primario produttore industriale si è concretizzato nel **2023** con la costruzione di un **caseificio di proprietà all'avanguardia**. L'investimento ha integrato verticalmente la filiera, consentendo il controllo diretto della materia prima e l'affermazione sul mercato del brand proprietario **\"Tenuta Volpe\"**, sinonimo di eccellenza artigianale e sostenibilità ambientale.\n\n---\n\n### 2. Analisi Settoriale, Attività & Prodotti\n**[ANALISI SETTORIALE: POSIZIONAMENTO STRATEGICO]**\n\nLa TRE STELLE FOOD S.r.l. opera con un modello di business integrato focalizzato sulla qualità e sulla freschezza del prodotto caseario unito alla fornitura commerciale all'ingrosso di altri prodotti agroalimentari d'eccellenza.\n\n```\n                  [MODELLO DI BUSINESS INTEGRATO]\n                               │\n         ┌─────────────────────┴─────────────────────┐\n         ▼                                           ▼\n[DIVISIONE PRODUZIONE CASEARIA]            [DIVISIONE TRADING & SPECIALIST]\n(Core Formaggi & Latticini)                (Distribuzione Ingredienti & Food)\n- Mozzarella di Bufala Campana             - Linee di formaggi duri stagionati\n- Formaggi freschi (ricotta, fiordilatte)  - Prodotti alimentari di complemento\n- Ricotta e specialità fresche             - Confezioni destinate al canale Ho.Re.Ca.\n```\n\n*   **La Divisione Casearia (Brand \"Tenuta Volpe\"):** Focalizzata sulla produzione di Mozzarella di Bufala Campana DOP, formaggi freschi, stagionati e ricotta. Grazie al recente avvio dell'attività di allevamento bufalino interno (con una capacità massima di 400 capi nella stalla proprietaria), l'azienda produce autonomamente circa 11 quintali di latte al giorno (con un potenziale di 20 quintali a pieno regime), abbattendo i costi di approvvigionamento della materia prima (\"oro bianco\") e garantendo standard qualitativi elevatissimi.\n*   **La Divisione Trading & Distribuzione:** Al fine di massimizzare il cross-selling sul portafoglio clienti (specialmente Ho.Re.Ca. e catene di ristorazione organizzata), l'azienda commercializza formaggi stagionali, specialità alimentari preconfezionate di terzi e ingredienti pronti all'uso, ottimizzando l'efficienza della logistica refrigerata interna. L'azienda nel suo complesso NON gestisce conserve o passate di pomodoro.\n\nLa coesistenza di queste due divisioni consente di gestire in modo ottimale la **forte stagionalità tipica del settore lattiero-caseario nei mesi caldi**. L'azienda incrementa la propria forza lavoro integrando personale stagionale specializzato (nei mesi di picco estivo) a supporto del nucleo di personale fisso, garantendo la massima efficienza industriale senza gravare sulla struttura dei costi fissi nei periodi di minor intensità.\n\n---\n\n### 3. Analisi Economica (Fatturato & EBITDA)\n**[ANALISI ECONOMICA: PERFORMANCE ECCELLENTE]**\n\nL'andamento economico storico e previsionale della società evidenzia un trend di crescita impetuoso, sostenuto dall'entrata in funzione del nuovo caseificio e dall'ampliamento della capacità distributiva.\n\n| Indicatore di Bilancio | Anno 2022 (Storico) | Anno 2023 (Storico) | Anno 2024 (Previsionale) | Anno 2025 (Previsionale) | Variazione % (2022-2025) |\n| :--- | :---: | :---: | :---: | :---: | :---: |\n| **Valore della Produzione** | € 1.163.704 | € 3.287.070 | € 6.631.863 | € 6.991.621 | **+500,8%** |\n| **Fatturato (Ricavi Vendite)** | € 1.100.000 | € 3.150.000 | € 6.350.000 | € 6.748.943 | **+513,5%** |\n| **EBITDA (MOL)** | € 249.797 | € 571.478 | € 2.279.261 | € 2.298.389 | **+820,1%** |\n| **EBITDA Margin (%)** | 21,4% | 17,3% | 34,3% | 32,8% | **+53,2%** |\n| **Utile Netto d'Esercizio** | € 146.618 | € 265.799 | € 1.628.975 | € 1.631.086 | **+1.012,4%** |\n| **Cash Flow Generato** | € 177.358 | € 482.113 | € 1.943.320 | € 1.986.450 | **+1.019,9%** |\n\n> 📌 **INSIGHT DI MERCATO:** *La marginalità operativa (EBITDA Margin) si stabilizza su livelli d'eccellenza assoluta per il settore (oltre il 32% nel 2025), grazie all'integrazione verticale della filiera del latte e all'efficientamento energetico del nuovo impianto produttivo, che ha ridotto drasticamente l'impatto dei costi energetici.*\n\nLe proiezioni a lungo termine (2026-2031) confermano la solidità del modello di business, con un fatturato stimato in crescita costante fino a raggiungere **€ 8.860.000** nel 2031 ed un EBITDA di **€ 3.164.000**, a dimostrazione di una straordinaria capacità di generazione di valore e di tenuta della marginalità.\n\n---\n\n### 4. Analisi Finanziaria, PFN & Struttura Patrimoniale\n**[STRUTTURA PATRIMONIALE: SOLIDA E IN DELEVERAGING]**\n\nLa struttura patrimoniale della TRE STELLE FOOD S.r.l. riflette la fase di forte espansione e i significativi investimenti realizzati per la costruzione del caseificio e l'acquisto della mandria bufalina.\n\n*   **Evoluzione della Posizione Finanziaria Netta (PFN):**\n    La PFN al 2025 si attesta a **€ -5.047.000** (esprimente un indebitamento netto coerente con gli investimenti effettuati). Il piano industriale evidenzia un rapidissimo processo di deleveraging: la PFN migliora a **€ -4.409.000** nel 2026, si dimezza a **€ -1.219.000** nel 2028, per poi diventare **positiva (cassa netta) a partire dal 2029 (€ +400.000)**, fino a raggiungere un surplus di liquidità di **€ 3.572.000** nel 2031.\n*   **Logica del Leverage e Copertura del Circolante:**\n    L'elevato indebitamento iniziale è ampiamente mitigato dall'eccezionale capacità di generazione di cassa (Cash Flow di circa € 1,98 milioni nel 2025). Il fabbisogno finanziario a breve termine è strettamente legato alla ciclicità degli acquisti di materia prima (stoccaggio di latte e packaging refrigerato). Tale fabbisogno è interamente coperto da contratti di fornitura stabili e flussi commerciali autoestinguenti di primario standing.\n*   **Solidità Patrimoniale:**\n    Il Patrimonio Netto cresce progressivamente dai € 531.378 del 2023 ai **€ 3.663.064 del 2025**, grazie alla scelta virtuosa dell'azionista di accantonare integralmente gli utili a riserva, rafforzando la struttura dei mezzi propri a presidio dei rischi aziendali.\n\n---\n\n### 5. Analisi Sistema Bancario & Centrale Rischi\n**[ANALISI CENTRALE RISCHI: MASSIMA REGOLARITÀ]**\n\nL'analisi della Centrale Rischi e della struttura degli affidamenti evidenzia una gestione finanziaria estremamente ordinata e priva di tensioni.\n\n*   **Struttura Multibanca:** La società collabora in modo equilibrato con circa 11 istituti di credito (tra cui primari player quali Banco BPM, Unicredit, Credem, Banca Ifis, Banca Progetto, Illimity). Questa diversificazione evita fenomeni di dipendenza da singoli istituti.\n*   **Andamento degli Utilizzi:** I fidi a revoca e le linee autoliquidanti presentano tassi di utilizzo assolutamente coerenti con i volumi commerciali sviluppati, senza evidenziare irrigidimenti o tensioni di cassa.\n*   **Qualità del Credito:**\n    ✦ **Sofferenze / Incagli:** Zero segnalazioni storiche o in essere.\n    ✦ **Sconfinamenti:** Assenza strutturale di sconfinamenti sia sulle linee a revoca che sulle scadenze a medio-lungo termine.\n    ✦ **Rate Insolute:** Regolarità impeccabile nel rimborso dei piani di ammortamento dei mutui chirografari e dei contratti di leasing (Alba Leasing, Credit Agricole, Porsche Leasing).\n    ✦ **Pregiudizievoli:** Nessuna trascrizione pregiudizievole, pignoramento o atto esecutivo a carico della società o del socio unico.\n\n---\n\n### 6. Clienti, Fornitori & Organizzazione Commerciale\n**[PROFILO COMMERCIALE: PROATTIVO ED INTERNAZIONALE]**\n\nLa TRE STELLE FOOD S.r.l. ha saputo costruire un network commerciale internazionale di altissimo livello, focalizzandosi su mercati esteri ad alto valore aggiunto ed escludendo la GDO diretta nazionale per preservare la marginalità.\n\n```\n                     [FLUSSI COMMERCIALI]\n                              │\n         ┌────────────────────┴────────────────────┐\n         ▼                                         ▼\n   [MERCATO ESTERO]                        [MERCATO NAZIONALE]\n   (Quota Export: 65%)                     (Quota Italia: 35%)\n   - Germania (Calabria Delikates)         - Ortofrutta Desiderio S.r.l.\n   - Spagna (Manzi Italian Select)         - Grossisti Regionali Certificati\n   - Giappone, Canada, Australia           - Canale Ho.Re.Ca. di pregio\n```\n\n*   **Portafoglio Clienti & Export:**\n    L'export rappresenta circa il **65% del fatturato complessivo**, con una presenza consolidata in mercati stabili e ad alta capacità di spesa quali **Germania, Spagna, Giappone, Canada e Australia**. Tra i principali clienti esteri si annoverano:\n    *   *CALABRIA DELIKATES (Colonia, DE):* Contratto di fornitura minima settimanale di 5.000 kg (incremento minimo di fatturato annuo pari a **€ 1.352.000**).\n    *   *ITALIA MARKET (Gunding, DE):* Fornitura minima di 4.500 kg/settimana (incremento annuo di **€ 1.216.800**).\n    *   *MANZI ITALIAN SELECT (Eivissa, ES):* Fornitura minima di 4.000 kg/settimana (incremento annuo di **€ 1.071.200**).\n*   **Rapporto Privilegiato con Player Nazionali:**\n    Sul territorio nazionale, oltre alla collaborazione con *Ortofrutta Desiderio S.r.l.* (accordo da € 1,21 milioni/anno), spicca la partnership strategica e privilegiata con grossisti distributori d'eccellenza e canali Ho.Re.Ca. Questo rapporto garantisce alla TRE STELLE FOOD S.r.l. una totale pianificazione dei volumi produttivi, l'accesso a standard qualitativi di eccellenza e una certezza assoluta nei tempi di incasso.\n*   **Mitigazione del Rischio di Credito:**\n    Tutti i contratti di fornitura esteri e nazionali sono coperti da **primarie polizze assicurative contro i rischi commerciali e di insolvenza**, azzerando di fatto il rischio di perdite su crediti.\n*   **Parco Fornitori:**\n    Gli approvvigionamenti sono diversificati tra partner nazionali ed esteri di assoluto standing, come *Milchwerk Jager Gmbh* (Germania) per il latte di importazione e *Nuova Latte Soc. Coop.* per la raccolta locale, garantendo continuità operativa in ogni fase dell'anno.\n\n---\n\n### 7. Descrizione Operazione & Affidamenti Richiesti\n**[PROPOSTA DI AFFIDAMENTO: STRUTTURATA]**\n\nAl fine di supportare l'eccezionale crescita dei volumi commerciali derivante dai nuovi contratti di fornitura siglati e di ottimizzare il ciclo del capitale circolante, si propone la strutturazione del seguente pacchetto di affidamenti:\n\n| Linea di Credito | Importo Richiesto | Tasso Proposto | Commissioni | Garanzie & Mitigazioni Proposte |\n| :--- | :--- | :--- | :--- | :--- |\n| **Fido di campagna** | € 400.000 | 3,50% Indicizzato | 0,75% Omnicomprensiva | Assistito da Cambiale Agraria (durata 12 mesi, ammortamento 5 mesi) |\n| **Linea promiscua SBF/Anticipo Fatture** | € 100.000 | 5,10% Indicizzato | DA 1,00% PT 6,79% | Ottimizzazione ciclo capitale circolante commerciale |\n| **TOTALE PLAFOND RICHIESTO** | **€ 500.000** | --- | --- | **Proposta assistita da solidi flussi commerciali autoestinguenti** |\n\n*   **Motivazione Commerciale:** Il *Fido di Campagna* (nella forma di cambiale agraria) consentirà all'azienda di acquistare la materia prima (latte bufalino e vaccino) nei momenti di maggior convenienza sul mercato, massimizzando la marginalità industriale. Le linee di *Anticipo Export* e *SBF/Fatture* sosterranno la crescita del fatturato estero e nazionale, garantendo la liquidità necessaria nelle more dell'incasso delle fatture, peraltro assicurate.\n\n---\n\n### 8. Punti di Forza Commerciali\n**[PUNTI DI FORZA: RATING ECCELLENTE]**\n\n✦ **Governance Stabilizzata e Manageriale:** Presenza di un management team esperto (Savino e famiglia Campanile) a supporto della visione strategica del Socio Unico Antonio Volpe.  \n✦ **Integrazione Verticale della Filiera:** L'avvio dell'allevamento bufalino interno riduce la dipendenza da terzi per il latte e aumenta la marginalità del brand \"Tenuta Volpe\".  \n✦ **Assenza di Debiti Scaduti:** Posizione di assoluta regolarità nei confronti dei fornitori, degli istituti finanziari e degli enti previdenziali (DURC costantemente regolare).  \n✦ **Diversificazione Geografica:** Fatturato fortemente proiettato sui mercati esteri (Germania, Spagna, Asia) che presentano una marginalità superiore rispetto al mercato domestico.  \n✦ **Investimenti Agevolati Conclusi:** Utilizzo virtuoso di finanza agevolata (Invitalia) per la realizzazione del nuovo stabilimento produttivo ad alta efficienza energetica.  \n✦ **Rischio Credito Assicurato:** Copertura assicurativa totale sui crediti commerciali dei principali clienti esteri e nazionali.\n\n---\n\n### 9. Punti di Attenzione & Mitigazione delle Debolezze\n**[GESTIONE DEL RISCHIO: MITIGATO]**\n\n*   **Stagionalità dei Flussi di Cassa (Terzo Trimestre):**  \n    *Mitigazione:* La stagionalità dell'attività è mitigata dalla costanza degli accordi e dei canali di distribuzione refrigerata. Inoltre, il Fido di Campagna richiesto è strutturato appositamente per coprire i picchi di fabbisogno del circolante legati agli approvvigionamenti stagionali di latte, con rientro programmato nei mesi successivi tramite gli incassi dei contratti già formalizzati.\n*   **Concentrazione del Fatturato su Grandi Clienti:**  \n    *Mitigazione:* Sebbene i contratti con Calabria Delikates, Italia Market e Mutti S.p.a. rappresentino quote significative, si tratta di controparti di primario standing creditizio. La presenza di polizze assicurative sul credito azzera il rischio di default della controparte.\n*   **Elevato Indebitamento Iniziale (PFN 2025 a € -5,04M):**  \n    *Mitigazione:* L'indebitamento è di natura sana, finalizzato a investimenti in immobilizzazioni materiali (caseificio e stalla) che stanno già generando un EBITDA eccezionale (oltre il 32%). Il piano di ammortamento è ampiamente sostenibile dal Cash Flow operativo (€ 1,98 milioni nel 2025) e la PFN è prevista in totale pareggio già nel 2029.\n\n---\n\n### 10. Temi di Approfondimento\n**[TEMI DI APPROFONDIMENTO: ANALISI CRITICA]**\n\n🔹 **Dato rilevato:** ALERT [Rimanenze / Magazzino]: Le rimanenze sono cresciute del 149.9% YoY nel 2026, passando da € 595.000 (2025) a € 1.487.000 (2026), superando la soglia critica del 25%.  \n🔹 **Interpretazione:** L'incremento del magazzino non è indice di invenduto, bensì una scelta strategica deliberata legata all'avvio a pieno regime del nuovo caseificio e della stalla bufalina, unita alla necessità di stoccare packaging refrigerato e formaggi stagionali per far fronte ai massicci contratti di fornitura annuali siglati con i distributori tedeschi e spagnoli (che richiedono consegne minime settimanali costanti).  \n🔹 **Domanda Suggerita per la Visita Commerciale:** *\"Gentile Amministratore, in merito all'incremento programmato del magazzino nel 2026, quali sono le strategie di rotazione delle scorte che intendete adottare per ottimizzare il costo di stoccaggio e preservare la freschezza del prodotto caseario, anche alla luce dei contratti di fornitura settimanale con la Germania?\"*\n\n---\n\n### 11. Opportunità Commerciali (Cross-selling)\n**[OPPORTUNITÀ COMMERCIALI: CROSS-SELLING]**\n\nLa solida situazione finanziaria e la forte proiezione internazionale della TRE STELLE FOOD S.r.l. aprono eccellenti opportunità di cross-selling per la nostra Banca:\n\n```\n               [OPPORTUNITÀ DI CROSS-SELLING]\n                             │\n       ┌─────────────────────┼─────────────────────┐\n       ▼                     ▼                     ▼\n[PRODOTTI ESTERO]     [HEDGING & LEASING]   [WORKING CAPITAL]\n- Trade Finance       - IRS su debito MLT   - Factoring Reverse\n- Cash Management     - Leasing fotovoltaico- Smobilizzo Pro-Soluto\n```\n\n1.  **Programmi di Factoring (Reverse Factoring & Pro-Soluto):** Proposta di una linea di Factoring per lo smobilizzo pro-soluto dei crediti commerciali assicurati verso i distributori esteri, migliorando ulteriormente la PFN, e un programma di Reverse Factoring per agevolare i pagamenti ai piccoli conferitori locali di latte.\n2.  **Copertura Rischio Tasso (Interest Rate Swap - IRS):** Considerato l'importante stock di debito a medio-lungo termine (€ 4,34 milioni verso banche a MLT nel 2025), si propone la sottoscrizione di contratti IRS per trasformare il tasso da variabile a fisso, proteggendo i flussi di cassa aziendali da futuri rialzi dei tassi.\n3.  **Leasing Strumentale per Rinnovo Macchinari:** Proposta di leasing finanziario per l'installazione di un impianto fotovoltaico sul tetto del caseificio, coerentemente con il focus aziendale sull'efficientamento energetico e la sostenibilità.\n4.  **Servizi di Trade Finance e Cash Management Internazionale:** Attivazione di canali dedicati per la gestione valutaria e l'operatività estera (incassi transfrontalieri veloci) per i clienti in Giappone, Canada e Australia.\n\n---\n\n### 12. Conclusione & Sintesi Propositiva\n**[DELIBERA: PARERE FAVOREVOLE]**\n\nIn sintesi, la **TRE STELLE FOOD S.r.l.** si configura come una controparte di eccellente standing creditizio, industriale e commerciale. La transizione da distributore a produttore è stata gestita con successo, portando la marginalità a livelli di assoluto primato settoriale. I rischi di concentrazione e stagionalità sono brillantemente mitigati da contratti di fornitura strutturati, polizze assicurative sul credito e da partnership strategiche con una diversificata rete di distributori qualificati.\n\nLa Centrale Rischi impeccabile, unita a un piano industriale che prevede un rapidissimo deleveraging finanziario, conferma la piena sostenibilità delle linee di credito richieste.\n\nSi esprime, pertanto, **PARERE FAVOREVOLE** alla concessione del plafond di affidamenti richiesto pari a **€ 500.000 (di cui € 400.000 Fido di Campagna e € 100.000 Anticipo Fatture)**, invitando l'Analista Fidi Deliberante a procedere con l'approvazione della proposta, che consentirà alla Banca di consolidare la relazione con un cliente ad altissima redditività e forte potenziale di cross-selling.",
+    "descrizioneOperazione": "fido di campagna 400 K€ e anticipo fatture 100K",
+    "uploadedFiles": {
+      "businessPlan": {
+        "fileName": "TRE STELLE FOOD SRL - Business Plan 2026-2031.pdf",
+        "fileType": "application/pdf",
+        "dateUploaded": "2026-06-01T14:00:00.823Z"
+      },
+      "elencoFinanziamenti": {
+        "fileName": "1 Dettaglio_mutuiMlt_Breve_30_04_2026.pdf",
+        "fileType": "application/pdf",
+        "dateUploaded": "2026-06-01T14:00:10.690Z"
+      },
+      "cebi": {
+        "fileName": "BILANCIO 2025 COMPLETO.pdf",
+        "fileType": "application/pdf",
+        "dateUploaded": "2026-06-01T14:00:45.709Z"
+      },
+      "bilce": {
+        "fileName": "TRE STELLE FOOD SRL - Business Plan 2026-2031.pdf",
+        "fileType": "application/pdf",
+        "dateUploaded": "2026-06-01T14:02:12.917Z"
+      }
+    },
+    "originalFileName": "TRE STELLE FOOD SRL - Business Plan 2026-2031.pdf"
+  }
+]
