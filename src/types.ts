@@ -64,4 +64,8 @@ export interface Pratica {
   };
   noteLibere?: string;
   numeroPratica?: string;
+  cdgCliente?: string;
+  andamentoContiBanca?: string;
+  ownerEmail?: string;
+  ownerName?: string;
 }

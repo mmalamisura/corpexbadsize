@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import { 
   Building2, 
   FileText, 
@@ -23,12 +23,40 @@ import {
   Save,
   Check,
   RefreshCw,
-  Search
+  Search,
+  Globe,
+  ShieldAlert,
+  Sparkles,
+  ShieldCheck,
+  Activity,
+  ArrowRight,
+  Lock
 } from "lucide-react";
 import Markdown from "react-markdown";
 import { FinancialYear, ForecastYear, AlertMessage, Pratica } from "./types";
 
 export default function App() {
+  // Authentication states
+  const [userToken, setUserToken] = useState<string | null>(localStorage.getItem("malamisura_auth_token"));
+  const [currentUser, setCurrentUser] = useState<{ email: string; name: string } | null>(null);
+  const [authLoading, setAuthLoading] = useState(true);
+
+  // Auth Form State
+  const [authMode, setAuthMode] = useState<'login' | 'register' | 'forgot' | 'resetConfirm'>('login');
+  const [authEmail, setAuthEmail] = useState('');
+  const [authPassword, setAuthPassword] = useState('');
+  const [authName, setAuthName] = useState('');
+  const [authError, setAuthError] = useState('');
+  const [authSuccessMessage, setAuthSuccessMessage] = useState('');
+  const [authLoadingSpin, setAuthLoadingSpin] = useState(false);
+
+  // Password reset state
+  const [resetCode, setResetCode] = useState('');
+  const [demoOtpCode, setDemoOtpCode] = useState('');
+
+  // Master Supervisor options
+  const [supervisorUserFilter, setSupervisorUserFilter] = useState('all');
+
   // Application states
   const [pratiche, setPratiche] = useState<Pratica[]>([]);
   const [selectedPratica, setSelectedPratica] = useState<Pratica | null>(null);
@@ -40,6 +68,8 @@ export default function App() {
   const [showCreateModal, setShowCreateModal] = useState(false);
   const [newAziendaName, setNewAziendaName] = useState("");
   const [newNumeroPratica, setNewNumeroPratica] = useState("");
+  const [newCdgCliente, setNewCdgCliente] = useState("");
+  const [newAndamentoContiBanca, setNewAndamentoContiBanca] = useState("");
   const [newDocType, setNewDocType] = useState<'BILCe' | 'CEBI' | 'LOM'>("BILCe");
   const [newDescrizione, setNewDescrizione] = useState(
     "Istruttoria di fidi ordinaria per richiesta finanziamento a medio-lungo termine chirografario/ipotecario volto a sostenere lo smobilizzo circolante e investimenti produttivi."
@@ -65,14 +95,182 @@ export default function App() {
   const [editedDescrizione, setEditedDescrizione] = useState("");
   const [editedNoteLibere, setEditedNoteLibere] = useState("");
   const [editedNumeroPratica, setEditedNumeroPratica] = useState("");
+  const [editedCdgCliente, setEditedCdgCliente] = useState("");
+  const [editedAndamentoConti, setEditedAndamentoConti] = useState("");
   const [financialTab, setFinancialTab] = useState<'storico' | 'previsionale'>('storico');
 
   const timerIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
-  // 1. Fetch practice history on load
-  const fetchPratiche = async (selectId?: string) => {
+  // 1. Request password reset
+  const handleResetRequest = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setAuthError('');
+    setAuthSuccessMessage('');
+    setDemoOtpCode('');
+    if (!authEmail) {
+      setAuthError("Inserisci l'indirizzo email.");
+      return;
+    }
+    setAuthLoadingSpin(true);
     try {
-      const res = await fetch("/api/pratiche");
+      const res = await fetch("/api/auth/reset-password-request", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: authEmail })
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.error || "Impossibile avviare il recupero.");
+      }
+      setAuthSuccessMessage("Verifica avviata!");
+      if (data.demoOtp) {
+        setDemoOtpCode(data.demoOtp);
+      }
+      setAuthMode('resetConfirm');
+    } catch (err: any) {
+      setAuthError(err.message || "Errore di connessione.");
+    } finally {
+      setAuthLoadingSpin(false);
+    }
+  };
+
+  // 2. Confirm password reset with OTP
+  const handleResetConfirm = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setAuthError('');
+    setAuthSuccessMessage('');
+    if (!authEmail || !resetCode || !authPassword) {
+      setAuthError("Tutti i campi sono obbligatori.");
+      return;
+    }
+    setAuthLoadingSpin(true);
+    try {
+      const res = await fetch("/api/auth/reset-password-confirm", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: authEmail,
+          code: resetCode,
+          newPassword: authPassword
+        })
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.error || "Codice errato o scaduto.");
+      }
+      setAuthSuccessMessage("Password reimpostata con successo! Ora puoi accedere.");
+      setAuthMode('login');
+      setResetCode('');
+      setAuthPassword('');
+      setDemoOtpCode('');
+    } catch (err: any) {
+      setAuthError(err.message || "Errore di connessione.");
+    } finally {
+      setAuthLoadingSpin(false);
+    }
+  };
+
+  // Auth Submit
+  const handleAuthSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setAuthError('');
+    setAuthSuccessMessage('');
+    if (!authEmail || !authPassword || (authMode === 'register' && !authName)) {
+      setAuthError('Tutti i campi sono obbligatori.');
+      return;
+    }
+    
+    setAuthLoadingSpin(true);
+    try {
+      const endpoint = authMode === 'login' ? '/api/auth/login' : '/api/auth/register';
+      const body = authMode === 'login' 
+        ? { email: authEmail, password: authPassword }
+        : { email: authEmail, password: authPassword, name: authName };
+        
+      const res = await fetch(endpoint, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body)
+      });
+      
+      const data = await res.json();
+      if (!res.ok) {
+        throw new Error(data.error || 'Errore durante l\'autenticazione.');
+      }
+      
+      localStorage.setItem('malamisura_auth_token', data.token);
+      setUserToken(data.token);
+      setCurrentUser(data.user);
+      
+      // Clear fields
+      setAuthPassword('');
+      setAuthEmail('');
+      setAuthName('');
+      
+      // Fetch practices immediately with the new token
+      await fetchPratiche(undefined, data.token);
+    } catch (err: any) {
+      console.error(err);
+      setAuthError(err.message || 'Errore di connessione al server.');
+    } finally {
+      setAuthLoadingSpin(false);
+    }
+  };
+
+  // Logout handler
+  const handleLogout = () => {
+    localStorage.removeItem("malamisura_auth_token");
+    setUserToken(null);
+    setCurrentUser(null);
+    setPratiche([]);
+    setSelectedPratica(null);
+  };
+
+  // Verify token validation on load
+  useEffect(() => {
+    const verifyToken = async () => {
+      const token = localStorage.getItem("malamisura_auth_token");
+      if (!token) {
+        setAuthLoading(false);
+        return;
+      }
+      try {
+        const res = await fetch("/api/auth/me", {
+          headers: {
+            "Authorization": `Bearer ${token}`
+          }
+        });
+        if (res.ok) {
+          const data = await res.json();
+          setUserToken(token);
+          setCurrentUser(data.user);
+          // Fetch historical database files
+          await fetchPratiche(undefined, token);
+        } else {
+          localStorage.removeItem("malamisura_auth_token");
+          setUserToken(null);
+          setCurrentUser(null);
+        }
+      } catch (err) {
+        console.error("Auth validation failed:", err);
+      } finally {
+        setAuthLoading(false);
+      }
+    };
+    verifyToken();
+  }, []);
+
+  // 1. Fetch practice history with bearer authorization
+  const fetchPratiche = async (selectId?: string, customToken?: string | null) => {
+    const activeToken = customToken !== undefined ? customToken : userToken;
+    if (!activeToken) return;
+    
+    try {
+      const res = await fetch("/api/pratiche", {
+        headers: {
+          "Authorization": `Bearer ${activeToken}`
+        }
+      });
       if (!res.ok) throw new Error("Errore nel recupero della cronologia fidi.");
       const list: Pratica[] = await res.json();
       setPratiche(list);
@@ -80,18 +278,22 @@ export default function App() {
       if (selectId) {
         const found = list.find(p => p.id === selectId);
         if (found) setSelectedPratica(found);
-      } else if (list.length > 0 && !selectedPratica) {
-        setSelectedPratica(list[0]);
+      } else if (list.length > 0) {
+        // Only select first if nothing is selected or if selected is not in the list anymore
+        setSelectedPratica(prev => {
+          if (prev && list.some(l => l.id === prev.id)) {
+            return list.find(l => l.id === prev.id) || prev;
+          }
+          return list[0];
+        });
+      } else {
+        setSelectedPratica(null);
       }
     } catch (err) {
       console.error(err);
-      alert("Impossibile contattare il server CorpEx.");
+      alert("Impossibile contattare il server delle pratiche fidi.");
     }
   };
-
-  useEffect(() => {
-    fetchPratiche();
-  }, []);
 
   // Update editor value when selected practice changes
   useEffect(() => {
@@ -102,6 +304,8 @@ export default function App() {
       setEditedDescrizione(selectedPratica.descrizioneOperazione || "");
       setEditedNoteLibere(selectedPratica.noteLibere || "");
       setEditedNumeroPratica(selectedPratica.numeroPratica || "");
+      setEditedCdgCliente(selectedPratica.cdgCliente || "");
+      setEditedAndamentoConti(selectedPratica.andamentoContiBanca || "");
     }
   }, [selectedPratica]);
 
@@ -129,12 +333,17 @@ export default function App() {
     try {
       const res = await fetch("/api/pratiche", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { 
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${userToken}`
+        },
         body: JSON.stringify({
           aziendaName: newAziendaName,
           docType: newDocType,
           descrizioneOperazione: newDescrizione,
-          numeroPratica: newNumeroPratica
+          numeroPratica: newNumeroPratica,
+          cdgCliente: newCdgCliente,
+          andamentoContiBanca: newAndamentoContiBanca
         })
       });
       if (!res.ok) throw new Error("Errore di rete");
@@ -143,6 +352,8 @@ export default function App() {
       // Reset values
       setNewAziendaName("");
       setNewNumeroPratica("");
+      setNewCdgCliente("");
+      setNewAndamentoContiBanca("");
       setNewDescrizione("Istruttoria di fidi ordinaria per richiesta finanziamento a medio-lungo termine chirografario/ipotecario volto a sostenere lo smobilizzo circolante e investimenti produttivi.");
       setShowCreateModal(false);
       
@@ -159,7 +370,12 @@ export default function App() {
     if (!confirm("Sei sicuro di voler eliminare questa pratica creditizia? L'azione è irreversibile.")) return;
     
     try {
-      const res = await fetch(`/api/pratiche/${id}`, { method: "DELETE" });
+      const res = await fetch(`/api/pratiche/${id}`, { 
+        method: "DELETE",
+        headers: {
+          "Authorization": `Bearer ${userToken}`
+        }
+      });
       if (res.ok) {
         if (selectedPratica?.id === id) {
           setSelectedPratica(null);
@@ -191,7 +407,7 @@ export default function App() {
       file.name.endsWith("txt");
       
     if (!isValidFormat) {
-      alert("Formato file non supportato per l'istruttoria CorpEx. Carica un PDF, un file Excel (.xlsx, .xls), un file Word o un file di testo.");
+      alert("Formato file non supportato per l'istruttoria. Carica un PDF, un file Excel (.xlsx, .xls), un file Word o un file di testo.");
       return;
     }
 
@@ -209,7 +425,10 @@ export default function App() {
         
         const res = await fetch(`/api/pratiche/${selectedPratica.id}/upload/${slotName}`, {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
+          headers: { 
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${userToken}`
+          },
           body: JSON.stringify({
             fileData: rawBase64,
             fileName: file.name,
@@ -293,7 +512,10 @@ export default function App() {
 
     try {
       const res = await fetch(`/api/pratiche/${selectedPratica.id}/generate-report`, {
-        method: "POST"
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${userToken}`
+        }
       });
       
       clearInterval(stageInterval);
@@ -322,7 +544,10 @@ export default function App() {
     try {
       const res = await fetch(`/api/pratiche/${selectedPratica.id}`, {
         method: "PUT",
-        headers: { "Content-Type": "application/json" },
+        headers: { 
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${userToken}`
+        },
         body: JSON.stringify({
           markdownReport: editedMarkdown
         })
@@ -346,13 +571,18 @@ export default function App() {
     try {
       const res = await fetch(`/api/pratiche/${selectedPratica.id}`, {
         method: "PUT",
-        headers: { "Content-Type": "application/json" },
+        headers: { 
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${userToken}`
+        },
         body: JSON.stringify({
           aziendaName: editedAziendaName,
           settoreAttivita: editedSettore,
           descrizioneOperazione: editedDescrizione,
           noteLibere: editedNoteLibere,
-          numeroPratica: editedNumeroPratica
+          numeroPratica: editedNumeroPratica,
+          cdgCliente: editedCdgCliente,
+          andamentoContiBanca: editedAndamentoConti
         })
       });
       if (res.ok) {
@@ -365,7 +595,6 @@ export default function App() {
       console.error(err);
     }
   };
-
   // Manual financial row update support
   const handleUpdateFinancialMetric = async (yearIndex: number, key: keyof FinancialYear, value: string) => {
     if (!selectedPratica) return;
@@ -385,7 +614,10 @@ export default function App() {
     try {
       const res = await fetch(`/api/pratiche/${selectedPratica.id}`, {
         method: "PUT",
-        headers: { "Content-Type": "application/json" },
+        headers: { 
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${userToken}`
+        },
         body: JSON.stringify({
           financialData: updatedFinancial
         })
@@ -419,7 +651,10 @@ export default function App() {
     try {
       const res = await fetch(`/api/pratiche/${selectedPratica.id}`, {
         method: "PUT",
-        headers: { "Content-Type": "application/json" },
+        headers: { 
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${userToken}`
+        },
         body: JSON.stringify({
           forecastData: updatedForecast
         })
@@ -462,7 +697,10 @@ export default function App() {
     try {
       const res = await fetch(`/api/pratiche/${selectedPratica.id}`, {
         method: "PUT",
-        headers: { "Content-Type": "application/json" },
+        headers: { 
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${userToken}`
+        },
         body: JSON.stringify({
           forecastData: updatedForecast
         })
@@ -500,7 +738,10 @@ export default function App() {
     try {
       const res = await fetch(`/api/pratiche/${selectedPratica.id}`, {
         method: "PUT",
-        headers: { "Content-Type": "application/json" },
+        headers: { 
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${userToken}`
+        },
         body: JSON.stringify({
           financialData: updatedFinancial
         })
@@ -522,57 +763,13 @@ export default function App() {
     // HTML standard post action to server to format download file
     const form = document.createElement("form");
     form.method = "POST";
-    form.action = `/api/pratiche/${selectedPratica.id}/export/word`;
+    form.action = `/api/pratiche/${selectedPratica.id}/export/word?token=${userToken}`;
     document.body.appendChild(form);
     form.submit();
     document.body.removeChild(form);
   };
 
-  // Premium Invisible Print Layout Trigger
-  const handlePrintPDF = async () => {
-    if (!selectedPratica) return;
-    try {
-      const response = await fetch(`/api/pratiche/${selectedPratica.id}/print`);
-      if (!response.ok) throw new Error("Errore nel recupero del template");
-      const htmlText = await response.text();
-      
-      const oldIframe = document.getElementById('ex-print-iframe');
-      if (oldIframe) {
-        oldIframe.parentNode?.removeChild(oldIframe);
-      }
-      
-      const iframe = document.createElement('iframe');
-      iframe.id = 'ex-print-iframe';
-      iframe.style.position = 'fixed';
-      iframe.style.right = '0';
-      iframe.style.bottom = '0';
-      iframe.style.width = '0';
-      iframe.style.height = '0';
-      iframe.style.border = '0';
-      iframe.style.visibility = 'hidden';
-      document.body.appendChild(iframe);
-      
-      const doc = iframe.contentWindow?.document;
-      if (doc) {
-        doc.open();
-        doc.write(htmlText);
-        doc.close();
-      }
-      
-      setTimeout(() => {
-        try {
-          iframe.contentWindow?.focus();
-          iframe.contentWindow?.print();
-        } catch (printErr) {
-          console.error("Errore nel trigger di stampa iframe:", printErr);
-          window.open(`/api/pratiche/${selectedPratica.id}/print`, '_blank');
-        }
-      }, 500);
-    } catch (error) {
-      console.error("Errore durante la preparazione alla stampa:", error);
-      window.open(`/api/pratiche/${selectedPratica.id}/print`, '_blank');
-    }
-  };
+
 
   // Filters for Practice Table
   const filteredPratiche = pratiche.filter(p => {
@@ -581,39 +778,389 @@ export default function App() {
                           p.settoreAttivita?.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesStatus = statusFilter === "all" ? true : p.status === statusFilter;
     const matchesDoc = docFilter === "all" ? true : p.docType === docFilter;
-    return matchesSearch && matchesStatus && matchesDoc;
+    
+    // Master analyst supervisor filters
+    const isMaster = currentUser?.email.toLowerCase() === "m.malamisura@gmail.com";
+    const matchesSupervisor = (!isMaster || supervisorUserFilter === "all") 
+      ? true 
+      : (p.ownerEmail || "m.malamisura@gmail.com").toLowerCase() === supervisorUserFilter.toLowerCase();
+      
+    return matchesSearch && matchesStatus && matchesDoc && matchesSupervisor;
   });
+
+  // Unique list of users for administration dropdown selector
+  const uniqueUsersInPratiche = useMemo(() => {
+    const map = new Map<string, string>();
+    pratiche.forEach(p => {
+      const email = (p.ownerEmail || "m.malamisura@gmail.com").toLowerCase();
+      const name = (p as any).ownerName || (email === "m.malamisura@gmail.com" ? "Massimo Malamisura" : email);
+      map.set(email, name);
+    });
+    return Array.from(map.entries()).map(([email, name]) => ({ email, name }));
+  }, [pratiche]);
+
+  if (authLoading) {
+    return (
+      <div className="min-h-screen bg-[#070b19] flex items-center justify-center font-sans">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-blue-500 mx-auto"></div>
+          <p className="text-slate-400 text-xs mt-4 font-mono">Inizializzazione Workspace Sicuro...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (!userToken) {
+    return (
+      <div className="min-h-screen bg-[#070b19] flex items-center justify-center p-4 font-sans select-none relative overflow-hidden">
+        {/* Glowing atmospheric gradient background elements */}
+        <div className="absolute top-[-25%] left-[-25%] w-[60%] h-[60%] rounded-full bg-blue-900/15 blur-[120px] pointer-events-none"></div>
+        <div className="absolute bottom-[-15%] right-[-15%] w-[50%] h-[50%] rounded-full bg-blue-850/15 blur-[100px] pointer-events-none"></div>
+
+        <div className="w-full max-w-md bg-[#0d1527] rounded-xl border border-slate-800 shadow-2xl overflow-hidden relative z-10 transition-all">
+          <div className="p-8 text-center border-b border-slate-800 bg-[#0a1128]">
+            <div className="bg-blue-600 text-white h-12 w-12 rounded-xl flex items-center justify-center font-bold text-lg shadow-inner mx-auto mb-4 font-mono">
+              MM
+            </div>
+            <h1 className="text-xl font-extrabold text-white tracking-tight uppercase">Massimo Malamisura</h1>
+            <p className="text-xs text-blue-400 font-bold uppercase tracking-wider mt-1 px-4">Istruttoria Crediti Corporate</p>
+          </div>
+
+          {authMode === 'login' && (
+            <form onSubmit={handleAuthSubmit} className="p-8 space-y-5 text-left">
+              {authError && (
+                <div className="bg-red-500/10 border border-red-500/20 text-red-400 p-3 rounded-lg text-xs font-medium flex items-center gap-2">
+                  <AlertTriangle className="w-4 h-4 shrink-0" />
+                  <span>{authError}</span>
+                </div>
+              )}
+              {authSuccessMessage && (
+                <div className="bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 p-3 rounded-lg text-xs font-medium flex items-center gap-2">
+                  <CheckCircle2 className="w-4 h-4 shrink-0" />
+                  <span>{authSuccessMessage}</span>
+                </div>
+              )}
+
+              <div className="space-y-1.5">
+                <label className="text-xs font-mono text-slate-400 uppercase block tracking-wider">Indirizzo Email</label>
+                <input 
+                  type="email"
+                  required
+                  placeholder="nome@piattaforma.com"
+                  value={authEmail}
+                  onChange={(e) => setAuthEmail(e.target.value)}
+                  className="w-full bg-[#121c32] border border-slate-800 focus:border-blue-600 text-white px-3.5 py-2 rounded-lg text-sm transition focus:outline-none focus:ring-1 focus:ring-blue-600"
+                />
+              </div>
+
+              <div className="space-y-1.5">
+                <div className="flex justify-between items-center">
+                  <label className="text-xs font-mono text-slate-400 uppercase block tracking-wider">Password</label>
+                  <button 
+                    type="button"
+                    onClick={() => {
+                      setAuthMode('forgot');
+                      setAuthError('');
+                      setAuthSuccessMessage('');
+                    }}
+                    className="text-[11px] text-blue-400 hover:text-blue-300 underline underline-offset-2 bg-transparent cursor-pointer font-medium"
+                  >
+                    Dimenticata?
+                  </button>
+                </div>
+                <input 
+                  type="password"
+                  required
+                  placeholder="••••••••"
+                  value={authPassword}
+                  onChange={(e) => setAuthPassword(e.target.value)}
+                  className="w-full bg-[#121c32] border border-slate-800 focus:border-blue-600 text-white px-3.5 py-2 rounded-lg text-sm transition focus:outline-none focus:ring-1 focus:ring-blue-600"
+                />
+              </div>
+
+              <button
+                type="submit"
+                disabled={authLoadingSpin}
+                className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-blue-850 text-white font-medium py-2.5 rounded-lg text-sm transition shadow-lg flex items-center justify-center gap-2 mt-2 cursor-pointer"
+              >
+                {authLoadingSpin ? (
+                  <>
+                    <RefreshCw className="w-4 h-4 animate-spin" />
+                    <span>Accesso in corso...</span>
+                  </>
+                ) : (
+                  <span>Accedi alla Piattaforma</span>
+                )}
+              </button>
+
+              <div className="text-center pt-2">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setAuthMode('register');
+                    setAuthError('');
+                    setAuthSuccessMessage('');
+                  }}
+                  className="text-xs text-blue-400 hover:text-blue-350 underline underline-offset-4 font-medium transition bg-transparent border-none cursor-pointer"
+                >
+                  Non hai un account? Registrati gratuitamente
+                </button>
+              </div>
+            </form>
+          )}
+
+          {authMode === 'register' && (
+            <form onSubmit={handleAuthSubmit} className="p-8 space-y-5 text-left">
+              {authError && (
+                <div className="bg-red-500/10 border border-red-500/20 text-red-400 p-3 rounded-lg text-xs font-medium flex items-center gap-2">
+                  <AlertTriangle className="w-4 h-4 shrink-0" />
+                  <span>{authError}</span>
+                </div>
+              )}
+
+              <div className="space-y-1.5">
+                <label className="text-xs font-mono text-slate-400 uppercase block tracking-wider">Nome Completo</label>
+                <input 
+                  type="text"
+                  required
+                  placeholder="Es. Massimo Malamisura"
+                  value={authName}
+                  onChange={(e) => setAuthName(e.target.value)}
+                  className="w-full bg-[#121c32] border border-slate-800 focus:border-blue-600 text-white px-3.5 py-2 rounded-lg text-sm transition focus:outline-none focus:ring-1 focus:ring-blue-600"
+                />
+              </div>
+
+              <div className="space-y-1.5">
+                <label className="text-xs font-mono text-slate-400 uppercase block tracking-wider">Indirizzo Email</label>
+                <input 
+                  type="email"
+                  required
+                  placeholder="nome@piattaforma.com"
+                  value={authEmail}
+                  onChange={(e) => setAuthEmail(e.target.value)}
+                  className="w-full bg-[#121c32] border border-slate-800 focus:border-blue-600 text-white px-3.5 py-2 rounded-lg text-sm transition focus:outline-none focus:ring-1 focus:ring-blue-600"
+                />
+              </div>
+
+              <div className="space-y-1.5">
+                <label className="text-xs font-mono text-slate-400 uppercase block tracking-wider">Password</label>
+                <input 
+                  type="password"
+                  required
+                  placeholder="••••••••"
+                  value={authPassword}
+                  onChange={(e) => setAuthPassword(e.target.value)}
+                  className="w-full bg-[#121c32] border border-slate-800 focus:border-blue-600 text-white px-3.5 py-2 rounded-lg text-sm transition focus:outline-none focus:ring-1 focus:ring-blue-600"
+                />
+              </div>
+
+              <button
+                type="submit"
+                disabled={authLoadingSpin}
+                className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-blue-850 text-white font-medium py-2.5 rounded-lg text-sm transition shadow-lg flex items-center justify-center gap-2 mt-2 cursor-pointer"
+              >
+                {authLoadingSpin ? (
+                  <>
+                    <RefreshCw className="w-4 h-4 animate-spin" />
+                    <span>Creazione profilo...</span>
+                  </>
+                ) : (
+                  <span>Registra nuovo Profilo</span>
+                )}
+              </button>
+
+              <div className="text-center pt-2">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setAuthMode('login');
+                    setAuthError('');
+                    setAuthSuccessMessage('');
+                  }}
+                  className="text-xs text-blue-400 hover:text-blue-350 underline underline-offset-4 font-medium transition bg-transparent border-none cursor-pointer"
+                >
+                  Hai già un account? Effettua l'accesso
+                </button>
+              </div>
+            </form>
+          )}
+
+          {authMode === 'forgot' && (
+            <form onSubmit={handleResetRequest} className="p-8 space-y-5 text-left">
+              <div className="text-xs text-slate-300 leading-relaxed bg-[#121a2e] border border-blue-900/40 p-3 rounded-lg">
+                Se hai perso la password, inserisci l'email con cui sei registrato. Genereremo un codice di sicurezza OTP direttamente in anteprima sul tuo monitor per permetterti di reimpostarla subito.
+              </div>
+
+              {authError && (
+                <div className="bg-red-500/10 border border-red-500/20 text-red-400 p-3 rounded-lg text-xs font-medium flex items-center gap-2">
+                  <AlertTriangle className="w-4 h-4 shrink-0" />
+                  <span>{authError}</span>
+                </div>
+              )}
+
+              <div className="space-y-1.5">
+                <label className="text-xs font-mono text-slate-400 uppercase block tracking-wider">Email registrata</label>
+                <input 
+                  type="email"
+                  required
+                  placeholder="Es. nome@piattaforma.com"
+                  value={authEmail}
+                  onChange={(e) => setAuthEmail(e.target.value)}
+                  className="w-full bg-[#121c32] border border-slate-800 focus:border-blue-600 text-white px-3.5 py-2 rounded-lg text-sm transition focus:outline-none focus:ring-1 focus:ring-blue-600"
+                />
+              </div>
+
+              <button
+                type="submit"
+                disabled={authLoadingSpin}
+                className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-blue-850 text-white font-medium py-2.5 rounded-lg text-sm transition shadow-lg flex items-center justify-center gap-2 mt-2 cursor-pointer"
+              >
+                {authLoadingSpin ? (
+                  <>
+                    <RefreshCw className="w-4 h-4 animate-spin" />
+                    <span>Inizializzazione...</span>
+                  </>
+                ) : (
+                  <span>Invia codice OTP di recupero</span>
+                )}
+              </button>
+
+              <div className="text-center pt-2">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setAuthMode('login');
+                    setAuthError('');
+                    setAuthSuccessMessage('');
+                  }}
+                  className="text-xs text-blue-400 hover:text-blue-200 font-medium transition bg-transparent border-none cursor-pointer"
+                >
+                  ← Torna alla login
+                </button>
+              </div>
+            </form>
+          )}
+
+          {authMode === 'resetConfirm' && (
+            <form onSubmit={handleResetConfirm} className="p-8 space-y-4 text-left">
+              {demoOtpCode && (
+                <div className="bg-amber-600/10 border border-amber-600/30 text-amber-300 p-3.5 rounded-lg text-xs space-y-1">
+                  <div className="font-bold flex items-center gap-1 text-amber-400">
+                    <Sparkles className="w-4.5 h-4.5 shrink-0 animate-pulse" />
+                    <span>DEMO PREVIEW INTEGRATION</span>
+                  </div>
+                  <div>Codice di sicurezza temporaneo generato: <span className="font-mono bg-amber-950 px-2 py-0.5 rounded font-bold text-white tracking-widest text-sm">{demoOtpCode}</span></div>
+                </div>
+              )}
+
+              {authError && (
+                <div className="bg-red-500/10 border border-red-500/20 text-red-400 p-3 rounded-lg text-xs font-medium flex items-center gap-2">
+                  <AlertTriangle className="w-4 h-4 shrink-0" />
+                  <span>{authError}</span>
+                </div>
+              )}
+
+              <div className="space-y-1.5">
+                <label className="text-xs font-mono text-slate-400 uppercase block tracking-wider">Codice OTP Ricevuto</label>
+                <input 
+                  type="text"
+                  required
+                  placeholder="Inserisci il codice OTP"
+                  value={resetCode}
+                  onChange={(e) => setResetCode(e.target.value)}
+                  className="w-full bg-[#121c32] border border-slate-800 focus:border-blue-600 text-white px-3.5 py-2 rounded-lg text-sm transition focus:outline-none focus:ring-1 focus:ring-blue-600 font-mono tracking-widest"
+                />
+              </div>
+
+              <div className="space-y-1.5">
+                <label className="text-xs font-mono text-slate-400 uppercase block tracking-wider">Nuova password d'accesso</label>
+                <input 
+                  type="password"
+                  required
+                  placeholder="Scegli una nuova password"
+                  value={authPassword}
+                  onChange={(e) => setAuthPassword(e.target.value)}
+                  className="w-full bg-[#121c32] border border-slate-800 focus:border-blue-600 text-white px-3.5 py-2 rounded-lg text-sm transition focus:outline-none focus:ring-1 focus:ring-blue-600"
+                />
+              </div>
+
+              <button
+                type="submit"
+                disabled={authLoadingSpin}
+                className="w-full bg-emerald-600 hover:bg-emerald-700 disabled:bg-[#1a2d42] text-white font-medium py-2.5 rounded-lg text-sm transition shadow-lg flex items-center justify-center gap-2 mt-2 cursor-pointer"
+              >
+                {authLoadingSpin ? (
+                  <>
+                    <RefreshCw className="w-4 h-4 animate-spin" />
+                    <span>Aggiornamento...</span>
+                  </>
+                ) : (
+                  <span>Ripristina Password & Accedi</span>
+                )}
+              </button>
+
+              <div className="text-center pt-2">
+                <button
+                  type="button"
+                  onClick={() => {
+                    setAuthMode('login');
+                    setAuthError('');
+                    setAuthSuccessMessage('');
+                  }}
+                  className="text-xs text-slate-450 hover:text-slate-300 font-medium transition bg-transparent border-none cursor-pointer"
+                >
+                  Annulla operazione
+                </button>
+              </div>
+            </form>
+          )}
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-[#f8fafc] font-sans antialiased flex flex-col">
       
       {/* HEADERBAR (Hidden during print) */}
-      <header className="no-print bg-[#0f172a] text-white py-4 px-6 shadow-md border-b border-slate-800 flex items-center justify-between sticky top-0 z-50">
-        <div className="flex items-center gap-3">
-          <div className="bg-[#2563eb] text-white p-2 rounded-lg font-bold flex items-center justify-center shadow-inner">
-            <Layers className="w-6 h-6 text-white" />
+      <header className="no-print bg-[#0a1128] text-white py-3 px-6 shadow-md border-b border-slate-850 flex items-center justify-between sticky top-0 z-50">
+        <div className="flex items-center gap-4">
+          <div className="bg-blue-600 text-white h-10 w-10 rounded-lg flex items-center justify-center font-bold shadow-inner">
+            MM
           </div>
           <div>
-            <span className="text-xl font-bold tracking-tight">CorpEx</span>
-            <span className="text-xs text-slate-400 block font-mono">Platform B2B fidi & analisi corporate</span>
+            <span className="text-base font-extrabold tracking-tight text-white block uppercase">Massimo Malamisura</span>
+            <span className="text-[10px] text-blue-400 font-bold block uppercase tracking-wider">@Copyright 2026</span>
           </div>
         </div>
         
         <div className="flex items-center gap-6">
-          <div className="hidden md:flex items-center gap-4 text-sm font-mono text-slate-300 border-l border-slate-700 pl-4">
-            <div>
-              <span className="text-slate-500 text-[10px] block uppercase">Network Ingress</span>
-              <span className="text-emerald-400 font-medium">● Online / Secure Cloud</span>
-            </div>
+          <div className="hidden md:flex flex-col text-right pl-4 pr-3 border-l border-slate-700 text-xs py-0.5">
+            <span className="text-slate-100 font-bold">{currentUser?.name}</span>
+            <span className="text-slate-400 text-[10px] font-mono">{currentUser?.email}</span>
+            
+            {currentUser?.email.toLowerCase() === "m.malamisura@gmail.com" && (
+              <span className="inline-flex items-center gap-1 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-[9px] font-mono font-bold px-1.5 py-0.5 rounded uppercase mt-1 w-fit ml-auto">
+                <ShieldCheck className="w-2.5 h-2.5 text-emerald-450 shrink-0" />
+                Supervisor Master
+              </span>
+            )}
           </div>
           
           <button 
             id="btn_nuova_pratica_header"
             onClick={() => setShowCreateModal(true)}
-            className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md font-medium text-sm flex items-center gap-2 transition duration-150 shadow"
+            className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md font-medium text-sm flex items-center gap-2 transition duration-150 shadow cursor-pointer"
           >
             <Plus className="w-4 h-4" />
             Nuova Pratica fidi
+          </button>
+
+          <button 
+            onClick={handleLogout}
+            className="bg-slate-850 hover:bg-slate-800 text-slate-300 px-3 py-1.5 rounded-md font-medium text-xs border border-slate-700 transition"
+          >
+            Esci
           </button>
         </div>
       </header>
@@ -668,6 +1215,26 @@ export default function App() {
                 </select>
               </div>
             </div>
+
+            {/* Master User Filter for Supervisor Role */}
+            {currentUser?.email.toLowerCase() === "m.malamisura@gmail.com" && (
+              <div className="border-t border-slate-100 pt-3 mt-1">
+                <label className="text-[10px] text-slate-400 block font-bold mb-1 uppercase tracking-wider">Supervisione Analisti</label>
+                <select 
+                  id="filter_analyst"
+                  value={supervisorUserFilter}
+                  onChange={(e) => setSupervisorUserFilter(e.target.value)}
+                  className="w-full bg-white text-xs text-slate-700 px-2.5 py-1.5 border border-slate-200 rounded-md focus:outline-none focus:ring-1 focus:ring-blue-500 font-medium"
+                >
+                  <option value="all">Tutti gli analisti (Visualizzazione Globale)</option>
+                  {uniqueUsersInPratiche.map(u => (
+                    <option key={u.email} value={u.email}>
+                      {u.name} ({u.email})
+                    </option>
+                  ))}
+                </select>
+              </div>
+            )}
           </div>
 
           {/* LIST OF CREDIT CASES ("PRATICHE") */}
@@ -714,6 +1281,13 @@ export default function App() {
                       </div>
                       
                       <h4 className="text-sm font-semibold text-slate-950 truncate">{p.aziendaName}</h4>
+                      
+                      {currentUser?.email.toLowerCase() === "m.malamisura@gmail.com" && (
+                        <div className="text-[10px] text-blue-600 font-medium bg-blue-50 border border-blue-100 rounded px-1.5 py-0.5 w-fit mt-1.5 flex items-center gap-1 font-mono">
+                          <ShieldCheck className="w-2.5 h-2.5 text-blue-600 shrink-0" />
+                          <span>Analista: {(p as any).ownerName || p.ownerEmail || "Massimo Malamisura"}</span>
+                        </div>
+                      )}
                       
                       <div className="flex items-center gap-3 text-xs text-slate-400 mt-1 font-mono">
                         <span className="flex items-center gap-1">
@@ -762,7 +1336,7 @@ export default function App() {
                     <div className="w-full space-y-4 max-w-4xl bg-slate-50 p-4 rounded-lg border border-slate-200">
                       <div className="font-semibold text-xs text-slate-700 uppercase tracking-wider">Modifica Parametri Pratica Fidi</div>
                       
-                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                      <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                         <div className="flex flex-col">
                           <label className="text-[10px] font-bold text-slate-500 block mb-1">Denominazione Impresa</label>
                           <input 
@@ -794,6 +1368,17 @@ export default function App() {
                             placeholder="Esempio: CC-2026-DLN"
                           />
                         </div>
+                        <div className="flex flex-col">
+                          <label className="text-[10px] font-bold text-slate-500 block mb-1">CDG Cliente</label>
+                          <input 
+                            id="edit_azienda_cdg"
+                            type="text" 
+                            value={editedCdgCliente}
+                            onChange={(e) => setEditedCdgCliente(e.target.value)}
+                            className="bg-white border border-slate-300 px-3 py-1.5 text-xs font-semibold rounded focus:ring-1 focus:ring-blue-500 focus:outline-none text-slate-850 font-mono"
+                            placeholder="Es. CDG-0918-X"
+                          />
+                        </div>
                       </div>
 
                       <div className="flex flex-col">
@@ -805,6 +1390,23 @@ export default function App() {
                           onChange={(e) => setEditedDescrizione(e.target.value)}
                           className="bg-white border border-slate-300 px-3 py-2 text-xs font-normal rounded focus:ring-1 focus:ring-blue-500 focus:outline-none w-full resize-y font-sans text-slate-850"
                           placeholder="Inserisci la descrizione della richiesta di fidi / operazione..."
+                        />
+                      </div>
+
+                      <div className="flex flex-col">
+                        <div className="flex items-center justify-between mb-1">
+                          <label className="text-[10px] font-bold text-emerald-800 block uppercase tracking-wider">
+                            🏦 Andamento conti e redditività con la banca (Sezione 12)
+                          </label>
+                          <span className="text-[9px] text-slate-400 font-mono">SEZIONE 12</span>
+                        </div>
+                        <textarea 
+                          id="edit_azienda_andamentoconti"
+                          rows={2}
+                          value={editedAndamentoConti}
+                          onChange={(e) => setEditedAndamentoConti(e.target.value)}
+                          className="bg-white border border-slate-300 px-3 py-2 text-xs font-normal rounded focus:ring-1 focus:ring-emerald-600 focus:outline-none w-full resize-y font-sans text-slate-850"
+                          placeholder="Fornisci qui: Anzianità del rapporto, movimentazione, insoluti %, rating interno/score Gianos, pricing, ecc... Se lasciato vuoto, verrà inserito un promemoria formale con le info da richiedere."
                         />
                       </div>
 
@@ -852,6 +1454,8 @@ export default function App() {
                             setEditedDescrizione(selectedPratica.descrizioneOperazione || "");
                             setEditedNoteLibere(selectedPratica.noteLibere || "");
                             setEditedNumeroPratica(selectedPratica.numeroPratica || "");
+                            setEditedCdgCliente(selectedPratica.cdgCliente || "");
+                            setEditedAndamentoConti(selectedPratica.andamentoContiBanca || "");
                             setIsEditingAzienda(true);
                           }}
                           className="text-slate-400 hover:text-[#2563eb] p-1 rounded hover:bg-slate-50 transition"
@@ -861,7 +1465,7 @@ export default function App() {
                         </button>
                       </div>
                       
-                      <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-slate-500 mt-1">
+                      <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5 text-sm text-slate-500 mt-1">
                         <span className={`flex items-center gap-1 font-mono px-2 py-0.5 rounded text-xs font-bold uppercase transition ${
                           selectedPratica.numeroPratica 
                             ? "text-[#1e3a8a] bg-blue-50 border border-blue-200" 
@@ -870,8 +1474,12 @@ export default function App() {
                           CODICE PRATICA fidi: {selectedPratica.numeroPratica || "DA INSERIRE (Clicca a destra ✎)"}
                         </span>
                         <span>•</span>
-                        <span className="flex items-center gap-1 font-mono text-slate-400 bg-slate-100 px-2 py-0.5 rounded text-[10px]" title="ID di tracciamento interno database">
-                          REGISTRO INTERNO: {selectedPratica.id}
+                        <span className={`flex items-center gap-1 font-mono px-2 py-0.5 rounded text-xs font-bold uppercase transition ${
+                          selectedPratica.cdgCliente 
+                            ? "text-[#1e3a8a] bg-emerald-50 border border-emerald-200" 
+                            : "text-amber-800 bg-amber-50 border border-amber-200 animate-pulse"
+                        }`}>
+                          CDG CLIENTE: {selectedPratica.cdgCliente || "NON SPECIFICATO (Clicca a destra ✎)"}
                         </span>
                         <span>•</span>
                         <span>Tipo: <strong>{selectedPratica.docType}</strong></span>
@@ -883,6 +1491,19 @@ export default function App() {
                       <div className="mt-4 bg-[#f8fafc] rounded-lg border border-slate-100 p-3 max-w-4xl text-xs text-slate-600 shadow-sm">
                         <span className="font-bold text-slate-400 block mb-1 uppercase tracking-wider text-[9px]">Operazione Finanziaria Richiesta</span>
                         <p className="leading-snug">{selectedPratica.descrizioneOperazione || "Nessuna descrizione specificata."}</p>
+                      </div>
+
+                      {/* Andamento conti e redditività (Sezione 12) */}
+                      <div className="mt-3 bg-emerald-50/45 rounded-lg border border-emerald-100/50 p-3 max-w-4xl text-xs text-slate-700 shadow-sm">
+                        <div className="flex items-center justify-between mb-1">
+                          <span className="font-bold text-emerald-800 block uppercase tracking-wider text-[9px]">🏦 Andamento conti e redditività con la banca (Sezione 12)</span>
+                          <span className="text-[9px] text-emerald-600 font-mono tracking-widest font-bold">INFO REQUISITE</span>
+                        </div>
+                        <p className="leading-snug whitespace-pre-line text-slate-600">
+                          {selectedPratica.andamentoContiBanca ? selectedPratica.andamentoContiBanca : (
+                            <span className="text-slate-400 italic">Nessuna informazione sull'andamento dei conti bancari inserita. Verrà mostrato un promemoria con l'elenco delle informazioni necessarie. Clicca sulla matita in alto per compilarlo.</span>
+                          )}
+                        </p>
                       </div>
 
                       {/* Gestor Free Text Notes */}
@@ -911,14 +1532,20 @@ export default function App() {
                     Word (.doc)
                   </button>
                   
-                  <button 
-                    onClick={handlePrintPDF}
-                    disabled={!selectedPratica.markdownReport}
+                  <a 
+                    href={selectedPratica.markdownReport ? `/api/pratiche/${selectedPratica.id}/print?token=${userToken}` : undefined}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className={`bg-slate-800 hover:bg-slate-900 text-white px-4 py-2 rounded-md font-medium text-xs flex items-center gap-1.5 transition shadow select-none ${!selectedPratica.markdownReport ? 'opacity-50 cursor-not-allowed pointer-events-none' : ''}`}
+                    onClick={(e) => {
+                      if (!selectedPratica.markdownReport) {
+                        e.preventDefault();
+                      }
+                    }}
                   >
                     <Printer className="w-4 h-4" />
                     Stampa Report / PDF
-                  </button>
+                  </a>
                 </div>
               </div>
 
@@ -932,7 +1559,7 @@ export default function App() {
                     <div className="flex items-center justify-between mb-4 gap-2">
                       <div className="flex items-center gap-2">
                         <Layers className="w-5 h-5 text-[#2563eb]" />
-                        <h3 className="font-bold text-slate-800 text-sm">Fascicolo Documentale CorpEx</h3>
+                        <h3 className="font-bold text-slate-800 text-sm">Fascicolo Documentale</h3>
                       </div>
                       
                       <span className="text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-slate-105 text-slate-600">
@@ -1491,7 +2118,7 @@ export default function App() {
 
                           <div className="bg-slate-50 border border-slate-100 rounded-lg p-3 text-[11px] text-slate-500 font-mono">
                             Tempo Svolgimento: <span className="text-blue-600 font-bold">{reportLoadingTimer} secondi</span>
-                            <p className="mt-1 font-sans text-slate-400">Le relazioni evolute di CorpEx seguono 12 capitoli regolamentati. Questa operazione richiede tipicamente 15-20 secondi per la formattazione dei dati storici.</p>
+                            <p className="mt-1 font-sans text-slate-400">Le relazioni evolute seguono 14 capitoli regolamentati. Questa operazione richiede tipicamente 15-20 secondi per la formattazione dei dati storici.</p>
                           </div>
                         </div>
                       ) : (
@@ -1503,7 +2130,7 @@ export default function App() {
                           <div className="space-y-1">
                             <h3 className="text-lg font-bold text-slate-900">Relazione AI non ancora generata</h3>
                             <p className="text-xs text-slate-500">
-                              Il sistema utilizzerà i dati consolidati e gli alert per formulare una relazione commerciale completa ed evoluta divisa tassativamente nei 12 capitoli istruttori fidi italiani.
+                              Il sistema utilizzerà i dati consolidati e gli alert per formulare una relazione commerciale completa ed evoluta divisa tassativamente nei 14 capitoli istruttori fidi italiani.
                             </p>
                           </div>
 
@@ -1580,27 +2207,31 @@ export default function App() {
                           {/* Running print header repeating on every page */}
                           <div className="hidden print:flex fixed top-[-1.5cm] left-0 right-0 border-b border-slate-200 pb-1.5 text-slate-400 text-[9px] font-mono justify-between">
                             <span>RELAZIONE COMMERCIALE EVOLUTA ED ISTRUTTORIA FIDI</span>
-                            <span>PRATICA FIDI N: {selectedPratica.numeroPratica || "N.D. (" + selectedPratica.id + ")"}</span>
+                            <span>PRATICA FIDI: {selectedPratica.numeroPratica || "DA CONFIGURARE"}</span>
                           </div>
 
                           {/* Running print footer repeating on every page */}
                           <div className="hidden print:flex fixed bottom-[-1.5cm] left-0 right-0 border-t border-slate-200 pt-1.5 text-slate-400 text-[9px] font-mono justify-between">
                             <span>Impresa: {selectedPratica.aziendaName}</span>
-                            <span>Banca Corporate Crediti d&apos;Impresa</span>
+                            <span>Massimo Malamisura — © Copyright 2026</span>
                           </div>
 
                           {/* Formal header for professional credit printouts (Only visible on the first page when printing) */}
                           <div className="hidden print:block border-b-2 border-[#1e3a8a] pb-4 mb-6 pt-4">
                             <div className="flex justify-between items-end">
-                              <div>
-                                <h1 className="text-3xl font-extrabold tracking-tight text-[#1e3a8a] m-0">CorpEx</h1>
-                                <p className="text-[8px] font-mono text-slate-500 m-0 uppercase tracking-widest">Piattaforma per la Gestione e l&apos;Analisi di Pratiche di Credito Corporate</p>
+                              <div className="flex items-center gap-3">
+                                <div className="bg-[#1e3a8a] text-white font-bold h-10 w-10 flex items-center justify-center rounded">
+                                  MM
+                                </div>
+                                <div>
+                                  <h1 className="text-xl font-bold tracking-tight text-[#1e3a8a] m-0">Massimo Malamisura</h1>
+                                  <p className="text-[9px] font-mono text-slate-500 m-0 uppercase tracking-wider">Istruttoria Corporate — © Copyright 2026</p>
+                                </div>
                               </div>
                               <div className="text-right font-mono text-slate-500 text-[10px] leading-tight">
                                 {selectedPratica.numeroPratica && (
                                   <div className="text-[#1e3a8a] font-bold text-xs mb-1">NUMERO PRATICA: {selectedPratica.numeroPratica}</div>
                                 )}
-                                <div>Dettaglio Pratica: <span className="font-semibold text-slate-700">{selectedPratica.id}</span></div>
                                 <div>Data Generazione: <span className="font-semibold text-slate-700">{new Date(selectedPratica.dateCreated).toLocaleDateString("it-IT")}</span></div>
                               </div>
                             </div>
@@ -1667,7 +2298,7 @@ export default function App() {
               </div>
               <h3 className="text-lg font-bold text-slate-900 mb-1">Nessuna Pratica Selezionata</h3>
               <p className="text-sm text-slate-500 mb-6 leading-relaxed">
-                Benvenuto in CorpEx. Per iniziare ad analizzare crediti ed alerts finanziari, seleziona una pratica attiva dalla barra laterale o avviane una nuova inserendo l&apos;anagrafica aziendale.
+                Benvenuto nella piattaforma di analisi creditizia e fidi di Massimo Malamisura. Per iniziare, seleziona una pratica attiva dalla barra laterale o avviane una nuova inserendo l&apos;anagrafica aziendale.
               </p>
               
               <button 
@@ -1729,17 +2360,27 @@ export default function App() {
               </div>
 
               <div>
-                <label className="text-xs font-bold text-slate-500 block mb-1 uppercase tracking-wider">Tipologia Documentazione d&apos;origine</label>
-                <select 
-                  id="modal_select_doctype"
-                  value={newDocType}
-                  onChange={(e) => setNewDocType(e.target.value as any)}
-                  className="w-full bg-slate-50 border border-slate-200 rounded px-3 py-2 text-sm text-slate-700 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:bg-white transition"
-                >
-                  <option value="BILCe">BILCe (Bilancio ricondotto e schemi standard)</option>
-                  <option value="CEBI">CEBI (Centrale di Bilancio)</option>
-                  <option value="LOM">LOM (Loan Origination Monitoring standard)</option>
-                </select>
+                <label className="text-xs font-bold text-slate-500 block mb-1 uppercase tracking-wider font-mono">Codice CDG Cliente (Compila Tu)</label>
+                <input 
+                  id="modal_input_cdg_cliente"
+                  type="text" 
+                  placeholder="Es. CDG-0918-X, CDG-204-A, ecc." 
+                  value={newCdgCliente}
+                  onChange={(e) => setNewCdgCliente(e.target.value)}
+                  className="w-full bg-slate-50 border border-slate-200 rounded px-3 py-2 text-sm text-slate-800 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:bg-white transition font-mono"
+                />
+              </div>
+
+              <div>
+                <label className="text-xs font-bold text-slate-500 block mb-1 uppercase tracking-wider font-mono">Andamento Conti e Redditività con la Banca (Opzionale)</label>
+                <textarea 
+                  id="modal_input_andamento_conti"
+                  rows={2}
+                  placeholder="Inserisci anzianità rapporto, movimentazione, insoluti, rating Gianos, tassi, ecc. per la sezione 12..." 
+                  value={newAndamentoContiBanca}
+                  onChange={(e) => setNewAndamentoContiBanca(e.target.value)}
+                  className="w-full bg-slate-50 border border-slate-200 rounded px-3 py-2 text-xs text-slate-800 focus:outline-none focus:ring-1 focus:ring-blue-500 focus:bg-white transition"
+                />
               </div>
 
               <div>
