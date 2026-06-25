@@ -1,3 +1,11 @@
+export interface LineaCredito {
+  id: string;
+  linea: string;
+  importo: number;
+  tassoProposto?: number;
+  commissioni?: number;
+}
+
 export interface FinancialYear {
   year: number;
   fatturato: number;
@@ -37,6 +45,18 @@ export interface UploadedFile {
   fileName: string;
   fileType: string;
   dateUploaded: string;
+  aiObservation?: string;
+}
+
+export interface ChatMessage {
+  role: 'user' | 'model';
+  text: string;
+  timestamp: string;
+  attachments?: {
+    fileName: string;
+    fileType: string;
+    savedName?: string;
+  }[];
 }
 
 export interface Pratica {
@@ -56,16 +76,34 @@ export interface Pratica {
     bilce?: UploadedFile;
     cebi?: UploadedFile;
     lom?: UploadedFile;
+    sprintCrif?: UploadedFile;
     relazioneGestione?: UploadedFile;
     businessPlan?: UploadedFile;
     elencoFinanziamenti?: UploadedFile;
     centraleRischi?: UploadedFile;
-    variEventuali?: UploadedFile;
+    udcCondizioni?: UploadedFile;
+    udmCondizioni?: UploadedFile;
+    udmcondizioni?: UploadedFile;
+    udccondizioni?: UploadedFile;
+    reportGold?: UploadedFile;
+    esgReport?: UploadedFile;
+    variEventuali?: UploadedFile | UploadedFile[];
+    immaginiAzienda?: UploadedFile | UploadedFile[];
+    redditivita?: UploadedFile | UploadedFile[];
   };
+  operazioneFinanziariaRichiesta?: LineaCredito[];
   noteLibere?: string;
   numeroPratica?: string;
   cdgCliente?: string;
   andamentoContiBanca?: string;
+  crifValutazione?: string;
+  crifFascia?: string;
+  crifMotivazione?: string;
+  crValutazione?: string;
+  crFascia?: string;
+  crSintesi?: string;
+  compagineSociale?: any;
+  chatHistory?: ChatMessage[];
   ownerEmail?: string;
   ownerName?: string;
 }
